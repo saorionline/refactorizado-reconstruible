@@ -1,0 +1,1 @@
+UPDATE zonas SET label_mode = 'ninguno' WHERE id = 'estudio';

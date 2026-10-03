@@ -66,7 +66,6 @@
 <line x1="932.8" y1="294.0" x2="932.8" y2="414.0" stroke="#1f2933" stroke-width="3.5" stroke-linecap="square"/>
 <line x1="289.6" y1="462.0" x2="577.6" y2="462.0" stroke="#1f2933" stroke-width="3.5" stroke-linecap="square"/>
 <line x1="577.6" y1="150.0" x2="577.6" y2="246.0" stroke="#1f2933" stroke-width="3.5" stroke-linecap="square"/>
-<line x1="289.6" y1="246.0" x2="529.6" y2="246.0" stroke="#1f2933" stroke-width="3.5" stroke-linecap="square"/>
 <line x1="673.6" y1="150.0" x2="673.6" y2="246.0" stroke="#1f2933" stroke-width="3.5" stroke-linecap="square"/>
 <line x1="769.6" y1="294.0" x2="769.6" y2="534.0" stroke="#1f2933" stroke-width="3.5" stroke-linecap="square"/>
 <line x1="529.6" y1="246.0" x2="769.6" y2="246.0" stroke="#9aa5b1" stroke-width="1" stroke-dasharray="5 4"/>
@@ -92,9 +91,6 @@
 <line x1="769.6" y1="466.8" x2="769.6" y2="510.0" stroke="#ffffff" stroke-width="11"/>
 <line x1="769.6" y1="510.0" x2="812.8" y2="510.0" stroke="#1f2933" stroke-width="1.6"/>
 <path d="M 769.6 466.8 A 43.2 43.2 0 0 1 812.8 510.0" fill="none" stroke="#52606d" stroke-width="0.9" stroke-dasharray="3 3"/>
-<line x1="391.8" y1="246.0" x2="435.0" y2="246.0" stroke="#ffffff" stroke-width="11"/>
-<line x1="391.8" y1="246.0" x2="391.8" y2="202.8" stroke="#1f2933" stroke-width="1.6"/>
-<path d="M 435.0 246.0 A 43.2 43.2 0 0 0 391.8 202.8" fill="none" stroke="#52606d" stroke-width="0.9" stroke-dasharray="3 3"/>
 <line x1="673.6" y1="176.4" x2="673.6" y2="219.6" stroke="#ffffff" stroke-width="11"/>
 <line x1="673.6" y1="176.4" x2="716.8" y2="176.4" stroke="#1f2933" stroke-width="1.6"/>
 <path d="M 673.6 219.6 A 43.2 43.2 0 0 0 716.8 176.4" fill="none" stroke="#52606d" stroke-width="0.9" stroke-dasharray="3 3"/>
@@ -179,10 +175,7 @@
 <text x="947.2" y="358.0" font-size="11" font-weight="700" text-anchor="middle" fill="#fff">14</text>
 <circle cx="908.8" cy="354.0" r="7" fill="#1f2933"/>
 <text x="908.8" y="358.0" font-size="11" font-weight="700" text-anchor="middle" fill="#fff">15</text>
-<text x="409.6" y="260.0" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">ESTUDIO (2 PERSONAS)</text>
-<text x="409.6" y="260.0" font-size="12" font-weight="700" text-anchor="middle" fill="#1f2933">ESTUDIO (2 PERSONAS)</text>
-<text x="409.6" y="334.0" font-size="11" font-weight="400" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">5.00 × 2.00 = 10.0 m²</text>
-<text x="409.6" y="334.0" font-size="11" font-weight="400" text-anchor="middle" fill="#3e4c59">5.00 × 2.00 = 10.0 m²</text>
+
 <circle cx="601.6" cy="294.0" r="8" fill="#6b7682"/>
 <text x="601.6" y="298.0" font-size="11" font-weight="700" text-anchor="middle" fill="#fff">17</text>
 <circle cx="721.6" cy="294.0" r="8" fill="#6b7682"/>

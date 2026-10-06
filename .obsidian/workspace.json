@@ -99,7 +99,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "documentos/Consultas/Cómo usar el código.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +117,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "documentos/Consultas/Cómo usar el código.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +159,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "documentos/Consultas/Cómo usar el código.md",
+                "file": "documentos/Redimensionar a 120m2🤳.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -188,11 +186,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "3ed0ea5a1abdbe85",
+  "active": "f883db4f8ef3c216",
   "lastOpenFiles": [
-    "herramientas/plano.db-journal",
+    "herramientas/cambio.sql",
     "documentos/Consultas/SQLite Consultas.md",
     "documentos/Consultas/Cómo usar el código.md",
-    "documentos/Consultas"
+    "documentos/Consultas",
+    "herramientas/plano.db-journal"
   ]
 }

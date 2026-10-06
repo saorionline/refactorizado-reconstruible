@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implantación Lote 22</title>
+<style>
+:root{
+  --bg:#f6f4ef; --surface:#ffffff; --ink:#1f2933; --muted:#616e7c; --line:#d9d4c7;
+  --lot:#fbfaf6; --lot-stroke:#1f2933; --contour:#a39e8f; --setback:#c0763a;
+  --b-izq:#7fa7c9; --b-cen:#d9b77e; --b-der:#8fbf9a; --sel:#2f7fb5;
+  --ok:#2e7d4f; --bad:#c2412d; --chip:#efece4;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14181d; --surface:#1d232a; --ink:#e6e9ec; --muted:#9aa5b1; --line:#2f3740;
+    --lot:#1a2027; --lot-stroke:#e6e9ec; --contour:#5d6670; --setback:#e0954f;
+    --b-izq:#4f7ca3; --b-cen:#a8884f; --b-der:#5b9468; --sel:#5fb0e6;
+    --ok:#5cc28a; --bad:#ef7b67; --chip:#252c34;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14181d; --surface:#1d232a; --ink:#e6e9ec; --muted:#9aa5b1; --line:#2f3740;
+  --lot:#1a2027; --lot-stroke:#e6e9ec; --contour:#5d6670; --setback:#e0954f;
+  --b-izq:#4f7ca3; --b-cen:#a8884f; --b-der:#5b9468; --sel:#5fb0e6;
+  --ok:#5cc28a; --bad:#ef7b67; --chip:#252c34;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 "Segoe UI",system-ui,Arial,sans-serif}
+header{padding:16px 16px 4px;max-width:1280px;margin:0 auto}
+h1{font-size:20px;margin:0 0 2px}
+header p{margin:0;color:var(--muted)}
+main{display:grid;grid-template-columns:1fr 300px;gap:16px;padding:12px 16px;max-width:1280px;margin:0 auto}
+@media (max-width:860px){main{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+#lienzo{padding:8px;align-self:start;user-select:none}
+#plano{width:100%;height:auto;display:block;touch-action:none;user-select:none}
+aside{display:flex;flex-direction:column;gap:12px}
+aside .card{padding:12px}
+h2{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 8px}
+.fila{display:flex;flex-wrap:wrap;gap:6px}
+button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:7px;padding:5px 9px;cursor:pointer}
+button:hover{border-color:var(--sel)}
+button.activo{background:var(--sel);border-color:var(--sel);color:#fff}
+label{display:flex;align-items:center;gap:6px;margin:4px 0}
+input[type=number],input[type=text]{font:inherit;width:100%;padding:5px 8px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink)}
+input[type=number]{width:70px}
+.estado{list-style:none;margin:0;padding:0}
+.estado li{padding:3px 0;display:flex;gap:6px}
+.ok{color:var(--ok)} .bad{color:var(--bad)}
+.nota{color:var(--muted);font-size:12px;margin:6px 0 0}
+.hint{color:var(--muted);font-size:12px}
+#opciones{max-width:1280px;margin:0 auto;padding:0 16px 24px}
+#lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.opcion{padding:8px;cursor:pointer;position:relative}
+.opcion:hover{border-color:var(--sel)}
+.opcion svg{width:100%;height:auto;display:block}
+.opcion b{display:block;font-size:13px;margin-top:4px;padding-right:24px}
+.opcion .borrar{position:absolute;top:6px;right:6px;padding:0 6px;line-height:20px}
+.vacio{color:var(--muted)}
+/* SVG */
+.lote{fill:var(--lot);stroke:var(--lot-stroke);stroke-width:.18}
+.curva{fill:none;stroke:var(--contour);stroke-width:.08;stroke-dasharray:.4 .25}
+.retiro{fill:none;stroke:var(--setback);stroke-width:.1;stroke-dasharray:.5 .3}
+.lado{font-size:.75px;fill:var(--muted)}
+.bloque{stroke:var(--ink);stroke-width:.1;fill-opacity:.88;cursor:grab}
+.bloque.sel{stroke:var(--sel);stroke-width:.22}
+.bloque.mal{stroke:var(--bad);stroke-width:.22}
+.etq{font-size:.8px;font-weight:700;fill:var(--ink);pointer-events:none;text-anchor:middle}
+.dim{font-size:.6px;fill:var(--ink);pointer-events:none;text-anchor:middle}
+.frente{fill:var(--ink);pointer-events:none}
+.norte{fill:var(--ink)}
+.rejilla{stroke:var(--line);stroke-width:.03}
+</style>
+</head>
+<body>
+<header>
+  <h1>Lote 22 · composición de los 3 bloques</h1>
+  <p>Arrastra los bloques, gíralos y guarda las opciones que te gusten para compararlas abajo.</p>
+</header>
+
+<main>
+  <div class="card" id="lienzo">
+    <svg id="plano" viewBox="0 0 48 27" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+
+  <aside>
+    <div class="card">
+      <h2>Composiciones de partida</h2>
+      <div class="fila" id="presets"></div>
+    </div>
+
+    <div class="card">
+      <h2>Mover</h2>
+      <div class="fila">
+        <button id="modoBloque" class="activo">Un bloque</button>
+        <button id="modoCasa">Toda la casa</button>
+      </div>
+      <p class="hint" id="selInfo">Toca un bloque para seleccionarlo.</p>
+      <h2 style="margin-top:10px">Girar</h2>
+      <div class="fila">
+        <button data-rot="-15">⟲ 15°</button>
+        <button data-rot="15">⟳ 15°</button>
+        <button data-rot="90">⟳ 90°</button>
+        <button id="rot0">Recta (0°)</button>
+        <button id="rotVia">Frente a la vía</button>
+        <button id="rotCurvas">Paralela a las curvas</button>
+      </div>
+      <p class="hint">Teclado: flechas mueven 0.5 m (con Shift 0.1 m), R gira 90°, Q / E giran 15°.</p>
+    </div>
+
+    <div class="card">
+      <h2>Capas</h2>
+      <label><input type="checkbox" id="verCurvas" checked> Curvas de nivel (trazado aproximado)</label>
+      <label><input type="checkbox" id="snap" checked> Imán a 0.25 m</label>
+      <label>Retiro desde los linderos <input type="number" id="retiro" min="0" max="6" step="0.5" value="0"> m</label>
+    </div>
+
+    <div class="card">
+      <h2>Revisión</h2>
+      <ul class="estado" id="estado"></ul>
+      <p class="nota" id="resumen"></p>
+    </div>
+
+    <div class="card">
+      <h2>Guardar esta opción</h2>
+      <input type="text" id="nombreOpcion" placeholder="Ej. U mirando a la vía">
+      <div class="fila" style="margin-top:8px"><button id="guardar">Guardar</button></div>
+    </div>
+  </aside>
+</main>
+
+<section id="opciones">
+  <h2>Opciones guardadas</h2>
+  <div id="lista"></div>
+</section>
+
+<script>
+// ---------------------------------------------------------------------------
+// Datos del lote (metros), calcados con el lado de 39.43 m abajo y luego
+// girados 180° (GIRO_LOTE) para leerlo como pide la familia: Lote 20 arriba,
+// vía principal a la izquierda. Eje Y hacia arriba.
+// Las 4 medidas del plano + el ángulo leído de la imagen dan ≈ 680 m²
+// (el plano dice 725.55 m²: hay que confirmar con el topógrafo).
+// ---------------------------------------------------------------------------
+const GIRO_LOTE = ([x, y]) => [39.43 - x, 19 - y];
+const LOTE = [[0,0],[39.43,0],[35.72,17.21],[-0.23,19.0]].map(GIRO_LOTE);
+const LADOS = [
+  "39.43 m · Lote 20",
+  "17.60 m · Vía vehicular principal",
+  "36.00 m · hacia Lote 24",
+  "19.00 m · Lote 23",
+];
+// Curvas de nivel calcadas de la imagen (sin valores confirmados)
+const CURVAS = [
+  [[0.14,6.87],[4.06,5.63],[6.74,4.64],[10.77,3.17],[16.61,-0.03]],
+  [[0.14,14.68],[1.74,15.42],[4.08,14.0],[7.65,12.31],[10.53,10.3],[13.39,7.73],[16.7,4.81],[22.33,-0.11]],
+  [[3.81,18.78],[8.84,14.54],[13.23,9.88],[18.29,4.99],[24.05,0.97],[28.1,0.06]],
+  [[12.03,19.08],[16.33,15.22],[22.7,8.7],[28.85,2.64],[33.64,0.13]],
+  [[18.31,18.76],[23.32,14.57],[28.38,9.67],[32.98,4.56],[36.48,0.61]],
+  [[24.79,18.6],[28.33,15.78],[32.93,10.67],[35.7,4.71],[36.71,0.72]],
+  [[31.03,18.98],[34.16,14.02],[35.37,9.01],[36.67,3.21],[38.34,3.81]],
+].map(c => c.map(GIRO_LOTE));
+const NORTE_GRADOS = 114.9 + 180;  // dirección del norte (desde +X, antihorario)
+const ROT_VIA = 102.17 - 180;      // frente de la casa mirando a la vía principal
+const ROT_CURVAS = -41;            // lado largo paralelo a las curvas de nivel
+// Parte alta de la montaña: esquina Lote 20 / Lote 23 (arriba a la derecha)
+const ESQUINA_ALTA = GIRO_LOTE([0, 0]);
+
+const BLOQUES = {
+  izq: {nombre:"Ala izq.", w:4,  d:5, color:"var(--b-izq)"},
+  cen: {nombre:"Central",  w:10, d:8, color:"var(--b-cen)"},
+  der: {nombre:"Ala der.", w:4,  d:5, color:"var(--b-der)"},
+};
+
+// Composiciones en "coordenadas de casa": [x, y, giro] = esquina de fondo
+// izquierda de la huella; y crece hacia el frente (igual que el plano actual).
+const PRESETS = {
+  actual:     {nombre:"Plano actual",        b:{izq:[0,4,0],  cen:[4,0,0],   der:[14,3,0]}},
+  u:          {nombre:"En U",                b:{cen:[0,0,0],  izq:[0,8,0],   der:[6,8,0]}},
+  l:          {nombre:"En L",                b:{cen:[0,0,0],  der:[10,0,0],  izq:[10,5,0]}},
+  compacta:   {nombre:"Compacta",            b:{cen:[0,0,0],  izq:[0,8,90],  der:[5,8,90]}},
+  escalonada: {nombre:"Escalonada",          b:{izq:[0,0,0],  cen:[4,1.5,0], der:[14,5.5,0]}},
+  escA:       {nombre:"Escalonada A · alas alineadas",   b:{izq:[0,0,0],   cen:[4,1.5,0], der:[14,0,0]}},
+  escB:       {nombre:"Escalonada B · izq. con central", b:{izq:[0,1.5,0], cen:[4,1.5,0], der:[14,0,0]}},
+  escC:       {nombre:"Escalonada C · invertida",        b:{izq:[0,5.5,0], cen:[4,1.5,0], der:[14,0,0]}},
+  pabellones: {nombre:"Pabellones",          b:{izq:[0,1.5,0],cen:[7,0,0],   der:[20,1.5,0]}},
+};
+
+const MX = 4, TOP = 23;                  // márgenes del lienzo (m)
+const sx = x => x + MX, sy = y => TOP - y;
+const NS = "http://www.w3.org/2000/svg";
+const KEY = "lote22-opciones";
+
+let estado = {};      // {id: {cx, cy, rot}}
+let seleccion = "cen";
+let modo = "bloque";  // 'bloque' | 'casa'
+
+// ---------------------------------------------------------------------------
+// Geometría
+// ---------------------------------------------------------------------------
+const rad = g => g * Math.PI / 180;
+function esquinas(id, s = estado[id]) {
+  const {w, d} = BLOQUES[id], c = Math.cos(rad(s.rot)), n = Math.sin(rad(s.rot));
+  return [[-w/2,-d/2],[w/2,-d/2],[w/2,d/2],[-w/2,d/2]]
+    .map(([lx,ly]) => [s.cx + lx*c - ly*n, s.cy + lx*n + ly*c]);
+}
+function local(id, lx, ly, s = estado[id]) {
+  const c = Math.cos(rad(s.rot)), n = Math.sin(rad(s.rot));
+  return [s.cx + lx*c - ly*n, s.cy + lx*n + ly*c];
+}
+const cruz = (o, a, b) => (a[0]-o[0])*(b[1]-o[1]) - (a[1]-o[1])*(b[0]-o[0]);
+function dentro(p, poli) {           // polígono convexo antihorario
+  return poli.every((a, i) => cruz(a, poli[(i+1) % poli.length], p) >= -1e-6);
+}
+function interseccionRectas(p1, p2, p3, p4) {
+  const d = (p1[0]-p2[0])*(p3[1]-p4[1]) - (p1[1]-p2[1])*(p3[0]-p4[0]);
+  const a = p1[0]*p2[1] - p1[1]*p2[0], b = p3[0]*p4[1] - p3[1]*p4[0];
+  return [(a*(p3[0]-p4[0]) - (p1[0]-p2[0])*b) / d, (a*(p3[1]-p4[1]) - (p1[1]-p2[1])*b) / d];
+}
+function insetar(poli, r) {          // retiro: polígono interior a distancia r
+  if (r <= 0) return poli;
+  const n = poli.length;
+  const lineas = poli.map((a, i) => {
+    const b = poli[(i+1) % n], dx = b[0]-a[0], dy = b[1]-a[1], L = Math.hypot(dx, dy);
+    const nx = -dy / L * r, ny = dx / L * r;
+    return [[a[0]+nx, a[1]+ny], [b[0]+nx, b[1]+ny]];
+  });
+  return lineas.map((l, i) => {
+    const prev = lineas[(i - 1 + n) % n];
+    return interseccionRectas(prev[0], prev[1], l[0], l[1]);
+  });
+}
+function seSuperponen(P, Q) {        // ejes separadores; tocarse no cuenta
+  for (const poli of [P, Q]) {
+    for (let i = 0; i < poli.length; i++) {
+      const a = poli[i], b = poli[(i+1) % poli.length];
+      const eje = [-(b[1]-a[1]), b[0]-a[0]], L = Math.hypot(...eje);
+      const proy = pts => pts.map(p => (p[0]*eje[0] + p[1]*eje[1]) / L);
+      const pp = proy(P), qq = proy(Q);
+      if (Math.max(...pp) <= Math.min(...qq) + 0.01 || Math.max(...qq) <= Math.min(...pp) + 0.01) return false;
+    }
+  }
+  return true;
+}
+function segmentosCruzan(a, b, c, d) {
+  const d1 = cruz(c, d, a), d2 = cruz(c, d, b), d3 = cruz(a, b, c), d4 = cruz(a, b, d);
+  return ((d1 > 0) !== (d2 > 0)) && ((d3 > 0) !== (d4 > 0));
+}
+function curvasQueCruza(poli) {
+  let n = 0;
+  for (const c of CURVAS) {
+    let toca = c.some(p => dentro(p, poli));
+    for (let i = 0; !toca && i < c.length - 1; i++)
+      for (let j = 0; !toca && j < poli.length; j++)
+        toca = segmentosCruzan(c[i], c[i+1], poli[j], poli[(j+1) % poli.length]);
+    if (toca) n++;
+  }
+  return n;
+}
+function cajaGrupo(s = estado) {
+  const pts = Object.keys(s).flatMap(id => esquinas(id, s[id]));
+  const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+  return {x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys)};
+}
+const centroLote = (() => {
+  // centroide del área del polígono
+  let A = 0, cx = 0, cy = 0;
+  LOTE.forEach((p, i) => {
+    const q = LOTE[(i+1) % LOTE.length], f = p[0]*q[1] - q[0]*p[1];
+    A += f; cx += (p[0]+q[0]) * f; cy += (p[1]+q[1]) * f;
+  });
+  return [cx / (3*A), cy / (3*A), Math.abs(A/2)];
+})();
+const redondear = v => document.getElementById("snap").checked ? Math.round(v / 0.25) * 0.25 : v;
+const normGiro = g => { g = ((g % 360) + 540) % 360 - 180; return Math.round(g * 100) / 100; };
+
+// ---------------------------------------------------------------------------
+// Acciones
+// ---------------------------------------------------------------------------
+function aplicarPreset(k) {
+  const b = PRESETS[k].b, s = {};
+  for (const id in b) {
+    const [hx, hy, rot] = b[id], {w, d} = BLOQUES[id];
+    const fw = rot % 180 ? d : w, fd = rot % 180 ? w : d;
+    s[id] = {cx: hx + fw/2, cy: -(hy + fd/2), rot};
+  }
+  const c = cajaGrupo(s);
+  const dx = Math.round((centroLote[0] - (c.x0 + c.x1) / 2) * 4) / 4;
+  const dy = Math.round((centroLote[1] - (c.y0 + c.y1) / 2) * 4) / 4;
+  for (const id in s) { s[id].cx += dx; s[id].cy += dy; }
+  estado = s;
+  dibujarBloques();
+}
+function girar(delta) {
+  if (modo === "bloque") {
+    estado[seleccion].rot = normGiro(estado[seleccion].rot + delta);
+  } else {
+    const c = cajaGrupo(), ox = (c.x0 + c.x1) / 2, oy = (c.y0 + c.y1) / 2;
+    const co = Math.cos(rad(delta)), si = Math.sin(rad(delta));
+    for (const id in estado) {
+      const b = estado[id], x = b.cx - ox, y = b.cy - oy;
+      b.cx = ox + x*co - y*si; b.cy = oy + x*si + y*co; b.rot = normGiro(b.rot + delta);
+    }
+  }
+  dibujarBloques();
+}
+function fijarGiro(objetivo) {
+  const ref = modo === "bloque" ? estado[seleccion] : estado.cen;
+  girar(objetivo - ref.rot);
+}
+function mover(dx, dy) {
+  const ids = modo === "bloque" ? [seleccion] : Object.keys(estado);
+  ids.forEach(id => { estado[id].cx += dx; estado[id].cy += dy; });
+  dibujarBloques();
+}
+
+// ---------------------------------------------------------------------------
+// Dibujo
+// ---------------------------------------------------------------------------
+const svg = document.getElementById("plano");
+function el(tag, attrs, padre) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (padre) padre.appendChild(e);
+  return e;
+}
+const ptsAttr = poli => poli.map(p => `${sx(p[0]).toFixed(3)},${sy(p[1]).toFixed(3)}`).join(" ");
+
+let capaRetiro, capaCurvas, capaBloques;
+function dibujarBase() {
+  svg.innerHTML = "";
+  const defs = el("defs", {}, svg);
+  const clip = el("clipPath", {id: "clipLote"}, defs);
+  el("polygon", {points: ptsAttr(LOTE)}, clip);
+
+  // rejilla de 1 m dentro del lote (referencia de escala)
+  const rej = el("g", {"clip-path": "url(#clipLote)"}, svg);
+  for (let x = -1; x <= 40; x++) el("line", {class: "rejilla", x1: sx(x), y1: sy(-1), x2: sx(x), y2: sy(20)}, rej);
+  for (let y = -1; y <= 20; y++) el("line", {class: "rejilla", x1: sx(-1), y1: sy(y), x2: sx(40), y2: sy(y)}, rej);
+
+  el("polygon", {class: "lote", points: ptsAttr(LOTE), "fill-opacity": .6}, svg);
+  capaCurvas = el("g", {"clip-path": "url(#clipLote)"}, svg);
+  CURVAS.forEach(c => el("polyline", {class: "curva", points: ptsAttr(c)}, capaCurvas));
+  capaRetiro = el("polygon", {class: "retiro"}, svg);
+
+  // flecha "sube": de la parte baja hacia la esquina alta del lote
+  const [ax, ay] = ESQUINA_ALTA;
+  el("path", {d: `M${sx(ax - 6)},${sy(ay - 5)} L${sx(ax - 1.6)},${sy(ay - 1.3)}`,
+    stroke: "var(--setback)", "stroke-width": .12, fill: "none"}, svg);
+  el("path", {d: `M${sx(ax - 1.2)},${sy(ay - 1)} l-1.1,.25 l.55,.75 Z`, fill: "var(--setback)"}, svg);
+  const sube = el("text", {x: sx(ax - 6.3), y: sy(ay - 5.9), "text-anchor": "middle",
+    "font-size": .7, "font-weight": 700, fill: "var(--setback)"}, svg);
+  sube.textContent = "SUBE · parte alta";
+
+  // nombres de los linderos, por fuera del lote
+  LOTE.forEach((a, i) => {
+    const b = LOTE[(i+1) % LOTE.length];
+    const mx = (a[0]+b[0]) / 2, my = (a[1]+b[1]) / 2;
+    const dx = b[0]-a[0], dy = b[1]-a[1], L = Math.hypot(dx, dy);
+    const ox = mx + dy / L * 1.1, oy = my - dx / L * 1.1;   // normal hacia afuera
+    let ang = -Math.atan2(dy, dx) * 180 / Math.PI;
+    if (ang > 90) ang -= 180; if (ang < -90) ang += 180;
+    const t = el("text", {class: "lado", x: sx(ox), y: sy(oy), "text-anchor": "middle",
+      "dominant-baseline": "middle", transform: `rotate(${ang.toFixed(2)} ${sx(ox)} ${sy(oy)})`}, svg);
+    t.textContent = LADOS[i];
+  });
+
+  // norte
+  const giroBrujula = 90 - NORTE_GRADOS;
+  const g = el("g", {transform: `translate(${sx(40.6)} ${sy(20.6)}) rotate(${giroBrujula.toFixed(1)})`}, svg);
+  el("circle", {cx: 0, cy: 0, r: 1.1, fill: "none", stroke: "var(--ink)", "stroke-width": .08}, g);
+  el("path", {class: "norte", d: "M0,-1.5 L0.45,0.4 L0,0.1 L-0.45,0.4 Z"}, g);
+  // puntos cardinales; cada texto se contragira para que se lea derecho
+  [["N", 0, -1.9, .8, 700], ["S", 0, 1.9, .6, 400], ["OR", 2.0, 0, .6, 400], ["OCC", -2.2, 0, .6, 400]]
+    .forEach(([txt, lx, ly, size, peso]) => {
+      const t = el("text", {x: lx, y: ly, "text-anchor": "middle", "dominant-baseline": "middle",
+        "font-size": size, "font-weight": peso, fill: "var(--ink)",
+        transform: `rotate(${(-giroBrujula).toFixed(1)} ${lx} ${ly})`}, g);
+      t.textContent = txt;
+    });
+
+  capaBloques = el("g", {}, svg);
+  actualizarCapas();
+}
+
+function actualizarCapas() {
+  capaCurvas.style.display = document.getElementById("verCurvas").checked ? "" : "none";
+  const r = parseFloat(document.getElementById("retiro").value) || 0;
+  capaRetiro.setAttribute("points", ptsAttr(insetar(LOTE, r)));
+  capaRetiro.style.display = r > 0 ? "" : "none";
+  dibujarBloques();
+}
+
+function dibujarBloques() {
+  capaBloques.innerHTML = "";
+  const r = parseFloat(document.getElementById("retiro").value) || 0;
+  const zona = insetar(LOTE, r);
+  const ids = Object.keys(estado);
+  const polis = Object.fromEntries(ids.map(id => [id, esquinas(id)]));
+  const problemas = {};
+  ids.forEach(id => problemas[id] = []);
+  ids.forEach(id => {
+    if (!polis[id].every(p => dentro(p, LOTE))) problemas[id].push("se sale del lote");
+    else if (r > 0 && !polis[id].every(p => dentro(p, zona))) problemas[id].push("invade el retiro");
+  });
+  for (let i = 0; i < ids.length; i++)
+    for (let j = i + 1; j < ids.length; j++)
+      if (seSuperponen(polis[ids[i]], polis[ids[j]])) {
+        problemas[ids[i]].push(`se monta sobre ${BLOQUES[ids[j]].nombre}`);
+        problemas[ids[j]].push(`se monta sobre ${BLOQUES[ids[i]].nombre}`);
+      }
+
+  // el seleccionado se dibuja al final para que quede encima
+  const orden = ids.filter(id => id !== seleccion).concat(ids.includes(seleccion) ? [seleccion] : []);
+  orden.forEach(id => {
+    const b = BLOQUES[id], s = estado[id];
+    const g = el("g", {"data-id": id}, capaBloques);
+    const sel = modo === "casa" || id === seleccion;
+    el("polygon", {class: "bloque" + (problemas[id].length ? " mal" : sel ? " sel" : ""),
+      points: ptsAttr(polis[id]), fill: b.color, "data-id": id}, g);
+    if (id === "cen") {
+      const tri = [local(id, -0.5, -b.d/2 - 0.12), local(id, 0.5, -b.d/2 - 0.12), local(id, 0, -b.d/2 - 0.85)];
+      el("polygon", {class: "frente", points: ptsAttr(tri)}, g);
+    }
+    const t = el("text", {class: "etq", x: sx(s.cx), y: sy(s.cy) - 0.1}, g);
+    t.textContent = b.nombre;
+    const d = el("text", {class: "dim", x: sx(s.cx), y: sy(s.cy) + 0.75}, g);
+    d.textContent = `${b.w} × ${b.d} m`;
+  });
+
+  // panel de revisión
+  const ul = document.getElementById("estado");
+  ul.innerHTML = "";
+  ids.forEach(id => {
+    const li = document.createElement("li");
+    const mal = problemas[id].length > 0;
+    const curvas = curvasQueCruza(polis[id]);
+    li.innerHTML = `<span class="${mal ? "bad" : "ok"}">${mal ? "✗" : "✓"}</span>
+      <span><b>${BLOQUES[id].nombre}</b> · ${mal ? problemas[id].join(", ") : "bien ubicado"}
+      <br><span class="hint">cruza ${curvas} curva${curvas === 1 ? "" : "s"} de nivel · giro ${estado[id].rot}°</span></span>`;
+    ul.appendChild(li);
+  });
+  const huella = ids.reduce((a, id) => a + BLOQUES[id].w * BLOQUES[id].d, 0);
+  const c = cajaGrupo();
+  document.getElementById("resumen").innerHTML =
+    `Huella ${huella} m² · ocupa ${(huella / centroLote[2] * 100).toFixed(1)} % del lote<br>` +
+    `Caja total ${(c.x1 - c.x0).toFixed(1)} × ${(c.y1 - c.y0).toFixed(1)} m (en la orientación del dibujo)<br>` +
+    `Más curvas cruzadas = más corte y relleno de tierra. ` +
+    `Lote ≈ ${centroLote[2].toFixed(0)} m² con las 4 medidas (el plano dice 725.55 m²).`;
+  document.getElementById("selInfo").textContent = modo === "casa"
+    ? "Moviendo y girando toda la casa junta."
+    : `Seleccionado: ${BLOQUES[seleccion].nombre} (toca otro bloque para cambiar).`;
+}
+
+// ---------------------------------------------------------------------------
+// Arrastre
+// ---------------------------------------------------------------------------
+let arrastre = null;
+function puntoLote(ev) {
+  const p = svg.createSVGPoint();
+  p.x = ev.clientX; p.y = ev.clientY;
+  const q = p.matrixTransform(svg.getScreenCTM().inverse());
+  return [q.x - MX, TOP - q.y];
+}
+svg.addEventListener("pointerdown", ev => {
+  const id = ev.target.getAttribute && ev.target.getAttribute("data-id");
+  if (!id) return;
+  ev.preventDefault();
+  seleccion = id;
+  const ids = modo === "bloque" ? [id] : Object.keys(estado);
+  arrastre = {inicio: puntoLote(ev), ids, base: ids.map(i => [estado[i].cx, estado[i].cy])};
+  svg.setPointerCapture(ev.pointerId);
+  dibujarBloques();
+});
+svg.addEventListener("pointermove", ev => {
+  if (!arrastre) return;
+  const p = puntoLote(ev);
+  const dx = redondear(p[0] - arrastre.inicio[0]), dy = redondear(p[1] - arrastre.inicio[1]);
+  arrastre.ids.forEach((id, k) => { estado[id].cx = arrastre.base[k][0] + dx; estado[id].cy = arrastre.base[k][1] + dy; });
+  dibujarBloques();
+});
+const soltar = () => { arrastre = null; };
+svg.addEventListener("pointerup", soltar);
+svg.addEventListener("pointercancel", soltar);
+
+document.addEventListener("keydown", ev => {
+  if (ev.target.tagName === "INPUT") return;
+  const paso = ev.shiftKey ? 0.1 : 0.5;
+  const teclas = {ArrowLeft: [-paso, 0], ArrowRight: [paso, 0], ArrowUp: [0, paso], ArrowDown: [0, -paso]};
+  if (teclas[ev.key]) { ev.preventDefault(); mover(...teclas[ev.key]); }
+  else if (ev.key === "r" || ev.key === "R") girar(90);
+  else if (ev.key === "q" || ev.key === "Q") girar(15);
+  else if (ev.key === "e" || ev.key === "E") girar(-15);
+});
+
+// ---------------------------------------------------------------------------
+// Opciones guardadas (solo en este navegador)
+// ---------------------------------------------------------------------------
+function leerOpciones() {
+  try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; }
+}
+function escribirOpciones(lista) {
+  try { localStorage.setItem(KEY, JSON.stringify(lista)); } catch (e) {}
+}
+let opciones = leerOpciones();
+
+function miniatura(s) {
+  const bloques = Object.keys(s).map(id =>
+    `<polygon points="${ptsAttr(esquinas(id, s[id]))}" fill="${BLOQUES[id].color}" stroke="var(--ink)" stroke-width=".12"/>`).join("");
+  return `<svg viewBox="2 2 44 23" xmlns="${NS}"><polygon class="lote" points="${ptsAttr(LOTE)}"/>${bloques}</svg>`;
+}
+function dibujarOpciones() {
+  const lista = document.getElementById("lista");
+  lista.innerHTML = opciones.length ? "" : `<p class="vacio">Aún no hay opciones guardadas. Arma una composición y pulsa “Guardar”.</p>`;
+  opciones.forEach((o, i) => {
+    const div = document.createElement("div");
+    div.className = "card opcion";
+    div.innerHTML = miniatura(o.estado) + `<b></b><button class="borrar" title="Borrar">×</button>`;
+    div.querySelector("b").textContent = o.nombre;
+    div.addEventListener("click", () => { estado = JSON.parse(JSON.stringify(o.estado)); dibujarBloques(); window.scrollTo({top: 0, behavior: "smooth"}); });
+    div.querySelector(".borrar").addEventListener("click", ev => {
+      ev.stopPropagation();
+      if (!confirm(`¿Borrar la opción “${o.nombre}”?`)) return;
+      opciones.splice(i, 1); escribirOpciones(opciones); dibujarOpciones();
+    });
+    lista.appendChild(div);
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Controles
+// ---------------------------------------------------------------------------
+const presets = document.getElementById("presets");
+for (const k in PRESETS) {
+  const b = document.createElement("button");
+  b.textContent = PRESETS[k].nombre;
+  b.addEventListener("click", () => aplicarPreset(k));
+  presets.appendChild(b);
+}
+document.querySelectorAll("[data-rot]").forEach(b => b.addEventListener("click", () => girar(+b.dataset.rot)));
+document.getElementById("rot0").addEventListener("click", () => fijarGiro(0));
+document.getElementById("rotVia").addEventListener("click", () => fijarGiro(ROT_VIA));
+document.getElementById("rotCurvas").addEventListener("click", () => fijarGiro(ROT_CURVAS));
+const bBloque = document.getElementById("modoBloque"), bCasa = document.getElementById("modoCasa");
+bBloque.addEventListener("click", () => { modo = "bloque"; bBloque.classList.add("activo"); bCasa.classList.remove("activo"); dibujarBloques(); });
+bCasa.addEventListener("click", () => { modo = "casa"; bCasa.classList.add("activo"); bBloque.classList.remove("activo"); dibujarBloques(); });
+document.getElementById("verCurvas").addEventListener("change", actualizarCapas);
+document.getElementById("retiro").addEventListener("input", actualizarCapas);
+document.getElementById("guardar").addEventListener("click", () => {
+  const input = document.getElementById("nombreOpcion");
+  const nombre = input.value.trim() || `Opción ${opciones.length + 1}`;
+  opciones.push({nombre, estado: JSON.parse(JSON.stringify(estado))});
+  escribirOpciones(opciones);
+  input.value = "";
+  dibujarOpciones();
+});
+
+dibujarBase();
+aplicarPreset("actual");
+dibujarOpciones();
+</script>
+</body>
+</html>

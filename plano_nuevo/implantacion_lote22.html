@@ -169,12 +169,23 @@ const ESQUINA_ALTA = GIRO_LOTE([0, 0]);
 
 const BLOQUES = {
   izq: {nombre:"Ala izq.", w:4,  d:5, color:"var(--b-izq)"},
-  cen: {nombre:"Central",  w:10, d:8, color:"var(--b-cen)"},
+  cen: {nombre:"Central",  w:9.75, d:7.8, color:"var(--b-cen)"},   // 7.80 × 9.75 de pie, frente a la vía
   der: {nombre:"Ala der.", w:4,  d:5, color:"var(--b-der)"},
 };
 
 // Composiciones en "coordenadas de casa": [x, y, giro] = esquina de fondo
 // izquierda de la huella; y crece hacia el frente (igual que el plano actual).
+// Composiciones con posición fija en el lote (centro y giro de cada bloque,
+// coordenadas del dibujo: Y hacia arriba). "Casa 3 m a la izquierda" es la de
+// lote.db (casa_3m_izquierda) con el Central de 7.80 × 9.75: esquina Lote 20 /
+// vía fija, alas al ras del borde inferior del Central y a 2.75 m de él.
+const FIJAS = {
+  casa3m: {nombre:"Casa 3 m a la izquierda", b:{
+    cen: {cx:16.15, cy:10.125, rot:-90},
+    der: {cx:25.30, cy:7.25,   rot:-90},
+    izq: {cx:30.30, cy:7.25,   rot:-90}}},
+};
+
 const PRESETS = {
   actual:     {nombre:"Plano actual",        b:{izq:[0,4,0],  cen:[4,0,0],   der:[14,3,0]}},
   u:          {nombre:"En U",                b:{cen:[0,0,0],  izq:[0,8,0],   der:[6,8,0]}},
@@ -278,6 +289,10 @@ const normGiro = g => { g = ((g % 360) + 540) % 360 - 180; return Math.round(g *
 // ---------------------------------------------------------------------------
 // Acciones
 // ---------------------------------------------------------------------------
+function aplicarFija(k) {
+  estado = JSON.parse(JSON.stringify(FIJAS[k].b));
+  dibujarBloques();
+}
 function aplicarPreset(k) {
   const b = PRESETS[k].b, s = {};
   for (const id in b) {
@@ -532,6 +547,12 @@ function dibujarOpciones() {
 // Controles
 // ---------------------------------------------------------------------------
 const presets = document.getElementById("presets");
+for (const k in FIJAS) {
+  const b = document.createElement("button");
+  b.textContent = FIJAS[k].nombre;
+  b.addEventListener("click", () => aplicarFija(k));
+  presets.appendChild(b);
+}
 for (const k in PRESETS) {
   const b = document.createElement("button");
   b.textContent = PRESETS[k].nombre;
@@ -557,7 +578,7 @@ document.getElementById("guardar").addEventListener("click", () => {
 });
 
 dibujarBase();
-aplicarPreset("actual");
+aplicarFija("casa3m");
 dibujarOpciones();
 </script>
 </body>

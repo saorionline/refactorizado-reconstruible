@@ -168,9 +168,9 @@ const ROT_CURVAS = -41;            // lado largo paralelo a las curvas de nivel
 const ESQUINA_ALTA = GIRO_LOTE([0, 0]);
 
 const BLOQUES = {
-  izq: {nombre:"Ala izq.", w:4,  d:3, color:"var(--b-izq)"},
+  izq: {nombre:"Ala izq.", w:3,  d:4, color:"var(--b-izq)"},
   cen: {nombre:"Central",  w:9.75, d:7.8, color:"var(--b-cen)"},   // 7.80 × 9.75 de pie, frente a la vía
-  der: {nombre:"Ala der.", w:4,  d:3, color:"var(--b-der)"},
+  der: {nombre:"Ala der.", w:3,  d:4, color:"var(--b-der)"},
 };
 
 // Composiciones en "coordenadas de casa": [x, y, giro] = esquina de fondo
@@ -179,13 +179,13 @@ const BLOQUES = {
 // coordenadas del dibujo: Y hacia arriba). "Casa 3 m a la izquierda" es la de
 // lote.db (casa_3m_izquierda) con el Central de 7.80 × 9.75: esquina Lote 20 /
 // vía fija, alas al ras del borde inferior del Central y a 2.75 m de él.
-// Alas de 4 × 3: el Ala der. conserva su esquina vía / Lote 24 y el Ala izq.
-// queda pegada a ella.
+// Alas de 3 × 4 (acostadas: 4 de ancho × 3 de alto): el Ala der. conserva su
+// esquina vía / Lote 24 y el Ala izq. queda pegada a ella.
 const FIJAS = {
   casa3m: {nombre:"Casa 3 m a la izquierda", b:{
     cen: {cx:16.15, cy:10.125, rot:-90},
-    der: {cx:24.30, cy:7.25,   rot:-90},
-    izq: {cx:27.30, cy:7.25,   rot:-90}}},
+    der: {cx:24.80, cy:6.75,   rot:-90},
+    izq: {cx:28.80, cy:6.75,   rot:-90}}},
 };
 
 const PRESETS = {

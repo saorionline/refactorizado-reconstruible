@@ -20,29 +20,40 @@ medida, escribe solo `más grande` / `más pequeña`.
 
 ---
 
-## 1. Bloque central (10 × 8 m · 80 m²)
+## 1. Bloque central (7.80 × 9.75 m · 76 m²) · opción A
 
-| # | Zona | Medidas hoy | ¿Se queda? | Nuevas medidas | ¿Dónde va? | Puertas hacia | Notas |
-|---|---|---|---|---|---|---|---|
-| 1 | Cocina | 6 × 2 (12 m²) | | | | | |
-| 2 | Comedor | 6 × 2.5 (15 m²) | | | | | |
-| 3 | Sala | 4 × 4 (16 m²) | | | | | |
-| 4 | Terraza | 6 × 1.5 (9 m²) | | | | | |
-| 5 | Lavandería | 2 × 2 (4 m²) | | | | | |
-| 6 | Ciclas | 2 × 1 (2 m²) | | | | | |
-| 7 | Rincón | 2 × 1 (2 m²) | | | | | |
-| 16 | Estudio (2 personas) | 5 × 2 (10 m²) | | | | | |
-| 17 | Baño de invitados *(techada, no suma área)* | 3 × 2 (6 m²) | | | | | |
-| 18 | Mini bodega *(techada, no suma área)* | 2 × 2 (4 m²) | | | | | |
+Plano de referencia: `propuestas_bloque_central.svg`. Escribe en **Decisión**
+`se queda`, `cambia` o `se va`; si cambia, di cómo en la columna de al lado.
+
+| #   | Zona                                    | Medidas hoy | Dónde está hoy                                          | Decisión | Si cambia: medidas / ubicación | Notas |
+| --- | --------------------------------------- | ----------- | ------------------------------------------------------- | -------- | ------------------------------ | ----- |
+| 1   | Cocina                                  | 5.85 × 1.95 | Arriba (Lote 20), esquina de la vía; abierta al comedor; ventana de 3.85 m centrada hacia el Lote 20 |          |                                |       |
+| 5   | Lavandería *(única con muro)*          | 1.95 × 1.95 | Arriba, al lado de la cocina, esquina Lote 20 / Lote 23 |          |                                |       |
+| 2   | Comedor                                 | 5.85 × 2.44 | Debajo de la cocina; entrada continua desde la vía; muro hacia la terraza |          |                                |       |
+| 4   | Terraza lado vía                        | 1.46 × 5.36 | Lado de la vía, hasta abajo (Lote 24); 2 peldaños de 0.24 × 5.36 hacia la vía |          |                                |       |
+| 3   | Sala *(incluye el antiguo baño 17 y bodega 18)* | 4.39 × 5.36 | Al lado de la terraza (ventanal con marco de 30 cm), desde el comedor hasta abajo (Lote 24) | |                    |       |
+| 16  | Estudio *(absorbe el antiguo acceso)*   | 1.95 × 3.41 | Esquina Lote 24 / Lote 23; entrada desde el Lote 23; muro hacia la terraza 4b |          |                                |       |
+| 4b  | Terraza lado Lote 23                    | 1.95 × 4.39 | Lado del Lote 23, debajo de la lavandería; sin muro, 2 peldaños de 0.24 × 4.39 hacia el Lote 23; ventanal al comedor con marco de 30 cm | |                  |       |
+
+**Eliminadas:** 6 Ciclas · 7 Rincón · 17 Baño de invitados y 18 Mini bodega (sin muros, pasan a ser parte de la sala) · Acceso Lote 24 (pasa a ser parte del estudio).
+
+### Lados del bloque
+
+| Lado | Hoy | Decisión (muro cerrado, ventana, puerta, ventanal…) |
+| --- | --- | --- |
+| Vía (izquierda) | Entrada continua al comedor (todo el lado); terraza abierta con 2 peldaños (0.24 × 5.36) | |
+| Lote 20 (arriba) | Muro de cocina y lavandería; ventana de 3.85 m centrada en la cocina | |
+| **Lote 23 (derecha)** | Lavandería (muro); terraza 4b sin muro con 2 peldaños (0.24 × 4.39); estudio con la entrada de la casa | |
+| Lote 24 (abajo) | Sin puertas: terraza lado vía (abierta), sala y estudio | |
 
 ## 2. Ala izquierda (4 × 5 m · 20 m²)
 
-| # | Zona | Medidas hoy | ¿Se queda? | Nuevas medidas | ¿Dónde va? | Puertas hacia | Notas |
-|---|---|---|---|---|---|---|---|
-| 8 | Alcoba principal | 4 × 3 (12 m²) | | | | | |
-| 9 | Baño principal | 2.4 × 2 (4.8 m²) | | | | | |
-| 10 | Clóset principal | 1 × 2 (2 m²) | | | | | |
-| 11 | Vestier principal | 0.6 × 2 (1.2 m²) | | | | | |
+| #   | Zona              | Medidas hoy      | ¿Se queda? | Nuevas medidas | ¿Dónde va? | Puertas hacia | Notas |
+| --- | ----------------- | ---------------- | ---------- | -------------- | ---------- | ------------- | ----- |
+| 8   | Alcoba principal  | 4 × 3 (12 m²)    |            |                |            |               |       |
+| 9   | Baño principal    | 2.4 × 2 (4.8 m²) |            |                |            |               |       |
+| 10  | Clóset principal  | 1 × 2 (2 m²)     |            |                |            |               |       |
+| 11  | Vestier principal | 0.6 × 2 (1.2 m²) |            |                |            |               |       |
 
 ## 3. Ala derecha (4 × 5 m · 20 m²)
 
@@ -65,13 +76,11 @@ medida, escribe solo `más grande` / `más pequeña`.
 
 | Pregunta | Respuesta |
 |---|---|
-| ¿Los bloques conservan su tamaño (Central 10 × 8, alas 4 × 5)? Si no, ¿cuál cambia y a cuánto? | |
 | Hoy las alas están **separadas** del Central. ¿Se unen con algo (pasillo, cubierta, puente)? ¿Cuál con cuál? | |
 | El **baño mixto (13)** perdió su puerta hacia la sala. ¿Necesita acceso desde la zona social? | |
 | La puerta **terraza ↔ alcoba principal** ya no existe. ¿Por dónde se entra a la alcoba principal? | |
-| ¿Por dónde es la **entrada principal** de la casa? | |
-| ¿El baño de invitados (17) y la bodega (18) siguen sin contar como área útil? | |
-| ¿Hay un **área total máxima** (hoy 110 m² útiles + 10 m² techados)? | |
+| ¿Las alas conservan su tamaño (4 × 5)? El Central ya bajó a 7.80 × 9.75. | |
+| ¿Hay un **área total máxima**? | |
 | ¿Qué espacios deben mirar **hacia la parte alta** (Lote 20) por vista o luz? | |
 | ¿Algún espacio necesita estar **lejos de la vía** (ruido)? | |
 | Otros deseos o restricciones | |

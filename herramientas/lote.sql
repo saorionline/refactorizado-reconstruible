@@ -68,7 +68,9 @@ CREATE TABLE bloques (
     giro        REAL NOT NULL DEFAULT 0,
     color       TEXT NOT NULL,
     marca_frente INTEGER NOT NULL DEFAULT 0 CHECK (marca_frente IN (0,1)),
-    notas       TEXT
+    notas       TEXT,
+    grupo_plano TEXT                        -- grupo de zonas de plano.db que va dentro
+                                            -- ('bloque_central' | 'ala_izquierda' | 'ala_derecha')
 );
 
 -- ----------------------------------------------------------------------------
@@ -113,10 +115,10 @@ INSERT INTO curvas_nivel (curva, orden, x, y) VALUES
 -- Distribución acordada: Central con el frente hacia la vía; Ala der. a 2.75 m
 -- del Central y Ala izq. pegada a ella; alas 5.25 m más abajo que el borde
 -- superior del Central (quedan 0.75 m por encima de su borde inferior).
-INSERT INTO bloques (id, nombre, ancho, fondo, x, y, giro, color, marca_frente, notas) VALUES
-('central', 'Central',   10.0, 8.0, 15.25, 4.00, 90, '#d9b77e', 1, 'Frente mirando a la vía (izquierda).'),
-('ala_der', 'Ala der.',   4.0, 5.0, 26.00, 9.25, 90, '#8fbf9a', 0, NULL),
-('ala_izq', 'Ala izq.',   4.0, 5.0, 31.00, 9.25, 90, '#7fa7c9', 0, NULL);
+INSERT INTO bloques (id, nombre, ancho, fondo, x, y, giro, color, marca_frente, notas, grupo_plano) VALUES
+('central', 'Central',   10.0, 8.0, 15.25, 4.00, 90, '#d9b77e', 1, 'Frente mirando a la vía (izquierda).', 'bloque_central'),
+('ala_der', 'Ala der.',   4.0, 5.0, 26.00, 9.25, 90, '#8fbf9a', 0, NULL, 'ala_derecha'),
+('ala_izq', 'Ala izq.',   4.0, 5.0, 31.00, 9.25, 90, '#7fa7c9', 0, NULL, 'ala_izquierda');
 
 INSERT INTO composiciones (nombre, bloque_id, x, y, giro)
 SELECT 'central_a_la_via', id, x, y, giro FROM bloques;

@@ -132,3 +132,19 @@ UPDATE bloques SET x = x + 1.0 WHERE id = 'ala_izq';
 Para no perder una distribución, guárdala con nombre y vuelve a ella cuando
 quieras (recetas 8 y 9 de `queries_lote.sql`). La distribución acordada está
 guardada como `central_a_la_via`.
+
+### Con las zonas internas (`generate_implantacion_svg.py`)
+
+Combina las dos bases: `lote.db` dice dónde va cada bloque y `plano.db` qué
+hay adentro. La columna `bloques.grupo_plano` une cada bloque con su grupo
+de zonas (`bloque_central`, `ala_izquierda`, `ala_derecha`).
+
+```bash
+py generate_implantacion_svg.py               # escribe ../planos/lote22_implantacion_interiores.svg
+```
+
+- Mover o girar un bloque en `lote.db` mueve su interior.
+- Cambiar una zona, muro, puerta o mueble en `plano.db` cambia lo que se ve
+  dentro del bloque (después de correr también este script).
+- Las puertas que unían dos grupos (p. ej. sala <-> alcoba auxiliar) no se
+  dibujan mientras los bloques estén separados; el plano lo avisa abajo.

@@ -250,11 +250,23 @@ def dibujar_brujula(cx: float, cy: float, azimut: float) -> str:
     return "\n".join(out)
 
 
-def dibujar_bloque(b: dict, mal: bool) -> str:
+def dibujar_bloque(b: dict, mal: bool, interior: str | None = None) -> str:
+    """Bloque como masa de color, o -- si llega `interior` (SVG ya ubicado) --
+    con sus zonas internas dentro y solo el contorno encima."""
     poli = esquinas(b)
+    cxm, cym = centro(poli)
+    if interior is not None:
+        color = COLOR_MAL if mal else COLOR_LOTE
+        out = [interior, f'<polygon points="{puntos(poli)}" fill="none" stroke="{color}" '
+                         f'stroke-width="3.5" stroke-linejoin="miter"/>']
+        if b["marca_frente"]:
+            f = b["fondo"] / 2
+            tri = [local(b, cxm, cym, -0.5, f + 0.25), local(b, cxm, cym, 0.5, f + 0.25),
+                   local(b, cxm, cym, 0, f + 0.95)]
+            out.append(f'<polygon points="{puntos(tri)}" fill="{COLOR_LOTE}"/>')
+        return "\n".join(out)
     trazo = f'stroke="{COLOR_MAL}" stroke-width="3"' if mal else f'stroke="{COLOR_LOTE}" stroke-width="1.6"'
     out = [f'<polygon points="{puntos(poli)}" fill="{b["color"]}" fill-opacity="0.9" {trazo}/>']
-    cxm, cym = centro(poli)
     if b["marca_frente"]:
         # triángulo por fuera del lado del frente (local +y = 'fondo' de abajo)
         f = b["fondo"] / 2
@@ -283,7 +295,13 @@ def dibujar_escala(x0: float, y0: float) -> str:
     return "\n".join(out)
 
 
-def generar_svg(data: dict) -> tuple[str, list]:
+def generar_svg(data: dict, interiores: dict[str, str] | None = None,
+                titulo: str = "Lote 22 · implantación de la casa",
+                notas_extra: list[str] | None = None) -> tuple[str, list]:
+    """`interiores` (opcional): {id_bloque: SVG de sus zonas ya ubicado en el
+    lote}; lo usa generate_implantacion_svg.py. `notas_extra`: líneas que se
+    agregan al final, debajo de la revisión."""
+    interiores = interiores or {}
     cfg = data["config"]
     lote = [(v["x"], v["y"]) for v in data["vertices"]]
     revision = revisar(data)
@@ -302,7 +320,7 @@ def generar_svg(data: dict) -> tuple[str, list]:
     partes.append(dibujar_linderos(data["vertices"]))
     partes.append(dibujar_sube(cfg))
     for b, problemas, _ in revision:
-        partes.append(dibujar_bloque(b, bool(problemas)))
+        partes.append(dibujar_bloque(b, bool(problemas), interiores.get(b["id"])))
 
     xs, ys = [p[0] for p in lote], [p[1] for p in lote]
     bx, by = px(max(xs) + 0, min(ys) - 2.3)
@@ -329,7 +347,7 @@ def generar_svg(data: dict) -> tuple[str, list]:
         f"(≈ {area_lote:.0f} m² con las 4 medidas; el plano dice {cfg.get('area_plano', 0):g} m²).",
         "Curvas de nivel calcadas de la imagen, sin valores confirmados. Más curvas cruzadas = más corte y relleno.",
         "El triángulo negro marca el frente de la casa.",
-    ]
+    ] + (notas_extra or [])
     for n in notas:
         partes.append(f'<text x="40" y="{fila + 8:.1f}" font-size="12" fill="{COLOR_TEXTO_TENUE}">{esc(n)}</text>')
         fila += 20
@@ -337,7 +355,7 @@ def generar_svg(data: dict) -> tuple[str, list]:
     canvas_h = fila + 30
     cabecera = [
         f'<rect width="{CANVAS_W}" height="{canvas_h:.0f}" fill="#ffffff"/>',
-        f'<text x="40" y="44" font-size="22" font-weight="700" fill="{COLOR_LOTE}">Lote 22 · implantación de la casa</text>',
+        f'<text x="40" y="44" font-size="22" font-weight="700" fill="{COLOR_LOTE}">{esc(titulo)}</text>',
         f'<text x="40" y="68" font-size="13" fill="{COLOR_TEXTO_SEC}">Generado desde lote.db · arriba la parte alta (Lote 20), izquierda la vía principal</text>',
     ]
     svg = (

@@ -36,11 +36,11 @@ ZONAS = [(1, "Cocina",       0,  0, 12,  4, "social",  False),
 
 # zonas pequeñas fuera de la rejilla, dibujadas encima de otra zona (en METROS)
 #           num  nombre  x      y     ancho  alto  color   ¿muro?  dentro de
-SUBZONAS = [(7, "Baño", 6.60, 8.75, 1.20, 1.00, "serv", True, "Estudio")]   # esquina Lote 24 / Lote 23, horizontal
+SUBZONAS = [(7, "Baño", 5.85, 8.75, 1.20, 1.00, "serv", True, "Estudio")]   # lado Lote 24, pegado a la sala, horizontal
 
 NOTAS = ["Baño (17) y bodega (18) sin muros: ahora son parte de la sala (4.39 × 5.36)",
-         "Estudio (6) 1.95 × 3.41 con entrada desde el Lote 23; en su esquina Lote 24 / Lote 23 va el baño (7) de 1.20 × 1.00",
-         "Ventana de la sala hacia el Lote 24: 1.50 m, centrada",
+         "Estudio (6) 1.95 × 3.41 con entrada desde el Lote 23; abajo, pegado a la sala, el baño (7) de 1.20 × 1.00",
+         "Baño (7): puerta desde la sala y ventana de 1 m hacia el Lote 24 · ventana de la sala al Lote 24: 2.50 m",
          "Terraza 4b 1.95 × 4.39 sin muro, con 2 peldaños 0.24 × 4.39 hacia el Lote 23",
          "Terraza de la vía 1.46 × 5.36 con 2 peldaños de 0.24 × 5.36 hacia la vía",
          "Ventanas hacia el Lote 20, centradas: cocina 3.85 m · lavandería 1.40 m"]
@@ -56,10 +56,12 @@ MARCOS = [(3, 9, 3, 9 + M30), (3, 20 - M30, 3, 20),      # terraza vía -> sala
 # ventanas: línea roja delgada que reemplaza ese tramo de muro
 _c = 6 - 3.85 / 2 / U       # cocina mide 12 u; ventana de 3.85 m centrada
 _l = 1.40 / 2 / U           # lavandería: 4 u desde x = 12; ventana de 1.40 m centrada
-_s = 1.50 / 2 / U           # sala: de x = 3 a 12 (centro 7.5); ventana de 1.50 m centrada
+_s = 2.50 / 2 / U           # sala: de x = 3 a 12 (centro 7.5); ventana de 2.50 m centrada
+_b = (5.85 + 1.20 / 2) / U  # centro del baño (7), en unidades
 VENTANAS = [(_c, 0, 12 - _c, 0),          # cocina -> Lote 20
             (14 - _l, 0, 14 + _l, 0),     # lavandería -> Lote 20
-            (7.5 - _s, 20, 7.5 + _s, 20)]  # sala -> Lote 24
+            (7.5 - _s, 20, 7.5 + _s, 20),  # sala -> Lote 24
+            (_b - 0.5 / U, 20, _b + 0.5 / U, 20)]  # baño (7) -> Lote 24, 1 m centrada
 
 # entradas y ventanales (naranja): (eje, coordenada fija, desde, hasta)
 #   eje 'x' = sobre un muro vertical (x fijo); eje 'y' = sobre uno horizontal
@@ -67,7 +69,8 @@ ENTRADAS = [("x", 0, 4 + M30, 9 - M30),    # vía -> comedor, 30 cm de muro a ca
             ("x", 3, 9 + M30, 20 - M30),   # ventanal terraza -> sala
             ("x", 16, 15.6, 17.4),         # Lote 23 -> estudio
             ("x", 12, 4 + M30, 13 - M30),  # ventanal terraza 4b -> comedor
-            ("x", 12, 1, 2.85)]            # cocina -> lavandería
+            ("x", 12, 1, 2.85),            # cocina -> lavandería
+            ("x", 12, 8.90 / U, 9.60 / U)]  # sala -> baño (7), puerta de 0.70 m
 
 PELDANO = 0.24 / U          # 24 cm de huella
 
@@ -133,7 +136,7 @@ def dibujar_subzona(num, nom, x, y, w, h, col, muro) -> list[str]:
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     return [f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{x1 - x0:.1f}" height="{y1 - y0:.1f}" fill="{C[col]}" {borde}/>',
             f'<text x="{cx:.1f}" y="{cy - 1:.1f}" font-size="10" font-weight="700" text-anchor="middle" fill="#1f2933">{num} {nom}</text>',
-            f'<text x="{cx:.1f}" y="{cy + 10:.1f}" font-size="9" text-anchor="middle" fill="#3e4c59">{w:.2f} × {h:.2f}</text>']
+            f'<text x="{cx:.1f}" y="{cy + 10:.1f}" font-size="7.5" text-anchor="middle" fill="#3e4c59">{w:.2f} × {h:.2f}</text>']
 
 
 def dibujar_terraza_abierta(x, y, w, h) -> list[str]:
@@ -170,7 +173,7 @@ def generar_svg() -> str:
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="Segoe UI, Arial, sans-serif">',
            f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
            '<text x="40" y="42" font-size="22" font-weight="700" fill="#1f2933">Bloque central · acomodo elegido (7.80 × 9.75 m = 76 m²)</text>',
-           '<text x="40" y="66" font-size="13" fill="#3e4c59">Vía a la izquierda · Lote 20 arriba · Lote 24 abajo. Muros en la lavandería, el baño, comedor | terraza y estudio | terraza 4b; lo demás es abierto (punteado).</text>',
+           '<text x="40" y="66" font-size="13" fill="#3e4c59">Vía a la izquierda · Lote 20 arriba · Lote 24 abajo. Muros: lavandería, baño, comedor | terraza, estudio | terraza 4b; lo demás abierto (punteado).</text>',
            '<text x="40" y="86" font-size="13" fill="#3e4c59"><tspan fill="#d9480f" font-weight="700">━━</tspan> entradas y ventanales: vía → comedor (continuo) · terraza → sala · terraza 4b → comedor · Lote 23 → estudio</text>',
            '<text x="40" y="106" font-size="13" fill="#3e4c59"><tspan fill="#1f2933" font-weight="700">━━</tspan> muro (30 cm de marco a cada lado de las entradas) · terrazas abiertas, sin muro, con 2 peldaños · <tspan fill="#e03131" font-weight="700">─</tspan> ventana</text>',
            f'<text x="{MX}" y="{MY - 26}" font-size="16" font-weight="700" fill="#1f2933">Opción A</text>']

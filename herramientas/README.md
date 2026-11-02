@@ -34,6 +34,7 @@ python --version
 | `lote.sql` | Tablas y datos de la implantación en el Lote 22: vértices del lote, curvas de nivel, bloques de la casa y composiciones guardadas. |
 | `lote.db` | Base de datos generada a partir de `lote.sql`. |
 | `generate_lote_svg.py` | Lee `lote.db` y escribe `../planos/lote22_implantacion.svg`, con la revisión de que los bloques quepan. |
+| `generate_bloque_central_svg.py` | Boceto del acomodo del bloque central (7.80 × 9.75 m): zonas, muros, marcos, ventanas, entradas y peldaños viven en listas al inicio del script. Escribe `../planos/propuestas_bloque_central.svg`. |
 | `queries_lote.sql` | Recetario para el lote: mover/girar bloques, mover toda la casa, retiro, guardar y volver a una composición. |
 
 ## Flujo de trabajo

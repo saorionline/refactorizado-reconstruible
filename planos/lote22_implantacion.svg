@@ -18,22 +18,22 @@
 <text x="609.4" y="566.1" font-size="12" fill="#3e4c59" text-anchor="middle" dominant-baseline="middle" transform="rotate(2.85 609.4 566.1)">36.00 m · hacia Lote 24</text>
 <text x="113.4" y="321.1" font-size="12" fill="#3e4c59" text-anchor="middle" dominant-baseline="middle" transform="rotate(77.83 113.4 321.1)">17.60 m · Vía vehicular principal</text>
 <defs><marker id="flechaSube" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#c0763a"/></marker></defs><line x1="892.3" y1="230.0" x2="1002.7" y2="138.8" stroke="#c0763a" stroke-width="2.4" marker-end="url(#flechaSube)"/><text x="885.1" y="264.0" font-size="12" font-weight="700" fill="#c0763a" text-anchor="middle">SUBE · parte alta</text>
-<polygon points="648.0,206.0 648.0,446.0 456.0,446.0 456.0,206.0" fill="#d9b77e" fill-opacity="0.9" stroke="#1f2933" stroke-width="1.6"/>
-<polygon points="453.1,314.0 453.1,338.0 435.6,326.0" fill="#1f2933"/>
-<text x="552.0" y="324.0" font-size="14" font-weight="700" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">Central</text>
-<text x="552.0" y="324.0" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2933">Central</text>
-<text x="552.0" y="341.0" font-size="11" font-weight="400" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">10 × 8 m</text>
-<text x="552.0" y="341.0" font-size="11" font-weight="400" text-anchor="middle" fill="#1f2933">10 × 8 m</text>
-<polygon points="834.0,332.0 834.0,428.0 714.0,428.0 714.0,332.0" fill="#8fbf9a" fill-opacity="0.9" stroke="#1f2933" stroke-width="1.6"/>
-<text x="774.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">Ala der.</text>
-<text x="774.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2933">Ala der.</text>
-<text x="774.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">4 × 5 m</text>
-<text x="774.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#1f2933">4 × 5 m</text>
-<polygon points="954.0,332.0 954.0,428.0 834.0,428.0 834.0,332.0" fill="#7fa7c9" fill-opacity="0.9" stroke="#1f2933" stroke-width="1.6"/>
-<text x="894.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">Ala izq.</text>
-<text x="894.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2933">Ala izq.</text>
-<text x="894.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">4 × 5 m</text>
-<text x="894.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#1f2933">4 × 5 m</text>
+<polygon points="576.0,206.0 576.0,446.0 384.0,446.0 384.0,206.0" fill="#d9b77e" fill-opacity="0.9" stroke="#1f2933" stroke-width="1.6"/>
+<polygon points="381.1,314.0 381.1,338.0 363.6,326.0" fill="#1f2933"/>
+<text x="480.0" y="324.0" font-size="14" font-weight="700" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">Central</text>
+<text x="480.0" y="324.0" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2933">Central</text>
+<text x="480.0" y="341.0" font-size="11" font-weight="400" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">10 × 8 m</text>
+<text x="480.0" y="341.0" font-size="11" font-weight="400" text-anchor="middle" fill="#1f2933">10 × 8 m</text>
+<polygon points="762.0,332.0 762.0,428.0 642.0,428.0 642.0,332.0" fill="#8fbf9a" fill-opacity="0.9" stroke="#1f2933" stroke-width="1.6"/>
+<text x="702.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">Ala der.</text>
+<text x="702.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2933">Ala der.</text>
+<text x="702.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">4 × 5 m</text>
+<text x="702.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#1f2933">4 × 5 m</text>
+<polygon points="882.0,332.0 882.0,428.0 762.0,428.0 762.0,332.0" fill="#7fa7c9" fill-opacity="0.9" stroke="#1f2933" stroke-width="1.6"/>
+<text x="822.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">Ala izq.</text>
+<text x="822.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2933">Ala izq.</text>
+<text x="822.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">4 × 5 m</text>
+<text x="822.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#1f2933">4 × 5 m</text>
 <g transform="translate(1011.8,54.8) rotate(155.1)">
 <circle r="21" fill="none" stroke="#1f2933" stroke-width="1.5"/>
 <path d="M0,-28 L8.5,7.6 L0,1.9 L-8.5,7.6 Z" fill="#1f2933"/>
@@ -50,9 +50,9 @@
 <text x="90.0" y="616.0" font-size="11" fill="#3e4c59">0</text>
 <text x="210.0" y="616.0" font-size="11" fill="#3e4c59" text-anchor="middle">5 m</text>
 <text x="40" y="646.0" font-size="15" font-weight="700" fill="#1f2933">Revisión</text>
-<text x="40" y="670.0" font-size="13" fill="#2e7d4f">✓ <tspan font-weight="700" fill="#1f2933">Central</tspan><tspan fill="#3e4c59"> · bien ubicado · x 15.25, y 4, giro 90° · cruza 4 curvas de nivel</tspan></text>
-<text x="40" y="692.0" font-size="13" fill="#2e7d4f">✓ <tspan font-weight="700" fill="#1f2933">Ala der.</tspan><tspan fill="#3e4c59"> · bien ubicado · x 26, y 9.25, giro 90° · cruza 2 curvas de nivel</tspan></text>
-<text x="40" y="714.0" font-size="13" fill="#2e7d4f">✓ <tspan font-weight="700" fill="#1f2933">Ala izq.</tspan><tspan fill="#3e4c59"> · bien ubicado · x 31, y 9.25, giro 90° · cruza 1 curva de nivel</tspan></text>
+<text x="40" y="670.0" font-size="13" fill="#2e7d4f">✓ <tspan font-weight="700" fill="#1f2933">Central</tspan><tspan fill="#3e4c59"> · bien ubicado · x 12.25, y 4, giro 90° · cruza 3 curvas de nivel</tspan></text>
+<text x="40" y="692.0" font-size="13" fill="#2e7d4f">✓ <tspan font-weight="700" fill="#1f2933">Ala der.</tspan><tspan fill="#3e4c59"> · bien ubicado · x 23, y 9.25, giro 90° · cruza 2 curvas de nivel</tspan></text>
+<text x="40" y="714.0" font-size="13" fill="#2e7d4f">✓ <tspan font-weight="700" fill="#1f2933">Ala izq.</tspan><tspan fill="#3e4c59"> · bien ubicado · x 28, y 9.25, giro 90° · cruza 2 curvas de nivel</tspan></text>
 <text x="40" y="744.0" font-size="12" fill="#7b8794">Huella 120 m² · ocupa 17.6 % del lote (≈ 681 m² con las 4 medidas; el plano dice 725.55 m²).</text>
 <text x="40" y="764.0" font-size="12" fill="#7b8794">Curvas de nivel calcadas de la imagen, sin valores confirmados. Más curvas cruzadas = más corte y relleno.</text>
 <text x="40" y="784.0" font-size="12" fill="#7b8794">El triángulo negro marca el frente de la casa.</text>

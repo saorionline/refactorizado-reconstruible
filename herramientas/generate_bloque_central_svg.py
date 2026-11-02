@@ -79,6 +79,22 @@ SEPARACION_ALAS = 2.75
 ALAS = [("Ala der.", 7.80 + SEPARACION_ALAS,       6.75, 4.0, 3.0, "#8fbf9a", "3 × 4 m"),
         ("Ala izq.", 7.80 + SEPARACION_ALAS + 4.0, 6.75, 4.0, 3.0, "#7fa7c9", "3 × 4 m")]
 
+# interior de las alas (METROS, mismo origen). Volteado para que los baños queden
+# pared con pared donde se tocan las alas: alcoba auxiliar hacia el Central,
+# alcoba principal hacia el Lote 23; clóset y vestier arriba (Lote 20), baños abajo (Lote 24).
+_d = 7.80 + SEPARACION_ALAS          # borde izquierdo del Ala der.
+_i = _d + 4.0                         # borde izquierdo del Ala izq. (= pared de los baños)
+_y = 6.75                             # borde superior de las alas
+#                num  nombre          x            y           ancho alto  color      ¿muro?
+INTERIOR_ALAS = [(12, "Alcoba aux.",  _d,          _y,         3.00, 3.00, "#e6edf4", False),
+                 (14, "Clóset",       _d + 3.00,   _y,         0.60, 1.05, "#dde5ee", False),
+                 (15, "Vestier",      _d + 3.60,   _y,         0.40, 1.05, "#dde5ee", False),
+                 (13, "Baño mixto",   _d + 3.00,   _y + 1.05,  1.00, 1.95, "#cfe3ea", True),
+                 (11, "Vestier",      _i,          _y,         0.40, 1.05, "#dde5ee", False),
+                 (10, "Clóset",       _i + 0.40,   _y,         0.60, 1.05, "#dde5ee", False),
+                 (9,  "Baño ppal.",   _i,          _y + 1.05,  1.00, 1.95, "#cfe3ea", True),
+                 (8,  "Alcoba ppal.", _i + 1.00,   _y,         3.00, 3.00, "#e6edf4", False)]
+
 # ---------------------------------------------------------------------------
 # Dibujo
 # ---------------------------------------------------------------------------
@@ -106,6 +122,9 @@ def comprobar_zonas() -> None:
                 assert (cx, cy) not in celdas, f"{nom} se encima con {celdas[(cx, cy)]}"
                 celdas[(cx, cy)] = nom
     assert len(celdas) == ANCHO_U * ALTO_U, f"faltan {ANCHO_U * ALTO_U - len(celdas)} celdas por llenar"
+    for nom, x, y, w, h, *_ in ALAS:
+        dentro = [z for z in INTERIOR_ALAS if x - 1e-6 <= z[2] < x + w - 1e-6]
+        assert abs(sum(z[4] * z[5] for z in dentro) - w * h) < 1e-6, f"el interior de {nom} no llena el ala"
     zonas = {z[1]: z for z in ZONAS}
     for _, nom, x, y, w, h, _, _, padre in SUBZONAS:
         _, _, px_, py_, pw, ph, _, _ = zonas[padre]
@@ -174,13 +193,27 @@ def dibujar_terraza_abierta(x, y, w, h) -> list[str]:
 def dibujar_alas() -> list[str]:
     """Las dos alas como masas de color, más la cota de separación con el Central."""
     out = []
-    for nom, x, y, w, h, col, etiqueta in ALAS:
+    for num, nom, x, y, w, h, col, muro in INTERIOR_ALAS:
         x0, y0 = P(x / U, y / U)
         x1, y1 = P((x + w) / U, (y + h) / U)
         cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
-        out += [f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{x1 - x0:.1f}" height="{y1 - y0:.1f}" fill="{col}" stroke="#1f2933" stroke-width="3"/>',
-                f'<text x="{cx:.1f}" y="{cy - 2:.1f}" font-size="12" font-weight="700" text-anchor="middle" fill="#1f2933">{nom}</text>',
-                f'<text x="{cx:.1f}" y="{cy + 13:.1f}" font-size="10.5" text-anchor="middle" fill="#1f2933">{etiqueta}</text>']
+        borde = 'stroke="#1f2933" stroke-width="2.5"' if muro else 'stroke="#9aa5b1" stroke-width="1" stroke-dasharray="4 3"'
+        out.append(f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{x1 - x0:.1f}" height="{y1 - y0:.1f}" fill="{col}" {borde}/>')
+        if w >= 2:      # alcobas: nombre y medidas
+            out += [f'<text x="{cx:.1f}" y="{cy - 2:.1f}" font-size="11" font-weight="700" text-anchor="middle" fill="#1f2933">{num} {nom}</text>',
+                    f'<text x="{cx:.1f}" y="{cy + 12:.1f}" font-size="9.5" text-anchor="middle" fill="#3e4c59">{w:.2f} × {h:.2f}</text>']
+        elif h > 1.5:   # baños (1 m de ancho): nombre en vertical
+            rot = f'transform="rotate(-90 {cx:.1f} {cy:.1f})"'
+            out += [f'<text x="{cx:.1f}" y="{cy - 1:.1f}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#1f2933" {rot}>{num} {nom}</text>',
+                    f'<text x="{cx:.1f}" y="{cy + 10:.1f}" font-size="8" text-anchor="middle" fill="#3e4c59" {rot}>{w:.2f} × {h:.2f}</text>']
+        else:           # clóset y vestier: solo el número
+            out.append(f'<text x="{cx:.1f}" y="{cy + 3:.1f}" font-size="8.5" font-weight="700" text-anchor="middle" fill="#1f2933">{num}</text>')
+    for nom, x, y, w, h, col, etiqueta in ALAS:
+        x0, y0 = P(x / U, y / U)
+        x1, y1 = P((x + w) / U, (y + h) / U)
+        out += [f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{x1 - x0:.1f}" height="{y1 - y0:.1f}" fill="none" stroke="#1f2933" stroke-width="3.5"/>',
+                f'<rect x="{x0:.1f}" y="{y0 - 6:.1f}" width="{x1 - x0:.1f}" height="4" fill="{col}"/>',
+                f'<text x="{(x0 + x1) / 2:.1f}" y="{y0 - 12:.1f}" font-size="12" font-weight="700" text-anchor="middle" fill="#1f2933">{nom} · {etiqueta}</text>']
     # cota de separación Central -> Ala der., a media altura de las alas
     _, ax, ay, _, ah, _, _ = ALAS[0]
     (c1x, cy_), (c2x, _) = P(7.80 / U, (ay + ah / 2) / U), P(ax / U, (ay + ah / 2) / U)

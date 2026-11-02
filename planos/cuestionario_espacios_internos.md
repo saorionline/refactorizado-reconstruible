@@ -49,21 +49,21 @@ Plano de referencia: `propuestas_bloque_central.svg`. Escribe en **Decisión**
 
 ## 2. Ala izquierda (4 × 3 m · 12 m²)
 
-| #   | Zona              | Medidas hoy      | ¿Se queda? | Nuevas medidas  | ¿Dónde va? | Puertas hacia | Notas |
-| --- | ----------------- | ---------------- | ---------- | --------------- | ---------- | ------------- | ----- |
-| 8   | Alcoba principal  | 4 × 3 (12 m²)    | Cambia     | 3.00 m × 3.00 m |            |               |       |
-| 9   | Baño principal    | 2.4 × 2 (4.8 m²) | Cambia     | 1.00 m × 3.00 m |            |               |       |
-| 10  | Clóset principal  | 1 × 2 (2 m²)     | No         |                 |            |               |       |
-| 11  | Vestier principal | 0.6 × 2 (1.2 m²) | No         |                 |            |               |       |
+| #   | Zona              | Medidas hoy      | ¿Se queda? | Nuevas medidas                                                 | ¿Dónde va? | Puertas hacia | Notas |
+| --- | ----------------- | ---------------- | ---------- | -------------------------------------------------------------- | ---------- | ------------- | ----- |
+| 8   | Alcoba principal  | 4 × 3 (12 m²)    | Cambia     | 3.00 m × 3.00 m                                                | Hacia el lote 23 (interior volteado para que los baños queden juntos) |               |       |
+| 9   | Baño principal    | 2.4 × 2 (4.8 m²) | Cambia     | 1.00 m × 1.95 m                                                | Abajo (lote 24), del lado del ala derecha: pared con pared con el baño mixto (13) |               |       |
+| 10  | Clóset principal  | 1 × 2 (2 m²)     | Cambia     | 0.60 m × 1.05 m (vertical: los 60 cm van paralelos al lote 24) | Arriba (lote 20), encima del baño principal, del lado de la alcoba principal |               |       |
+| 11  | Vestier principal | 0.6 × 2 (1.2 m²) | Cambia     | 0.40 m × 1.05 m (vertical, como el clóset)                     | Arriba (lote 20), encima del baño principal, del lado del ala derecha |               |       |
 
 ## 3. Ala derecha (4 × 3 m · 12 m²)
 
-| #   | Zona             | Medidas hoy        | ¿Se queda? | Nuevas medidas  | ¿Dónde va? | Puertas hacia | Notas |
-| --- | ---------------- | ------------------ | ---------- | --------------- | ---------- | ------------- | ----- |
-| 12  | Alcoba auxiliar  | 4 × 2.5 (10 m²)    | Cambia     | 3.00 m × 3.00 m |            |               |       |
-| 13  | Baño mixto       | 2.4 × 2.5 (6 m²)   | Cambia     | 1.00 m × 3.00 m |            |               |       |
-| 14  | Clóset auxiliar  | 0.6 × 2.5 (1.5 m²) |            |                 |            |               |       |
-| 15  | Vestier auxiliar | 1 × 2.5 (2.5 m²)   |            |                 |            |               |       |
+| #   | Zona             | Medidas hoy        | ¿Se queda? | Nuevas medidas                                                 | ¿Dónde va? | Puertas hacia | Notas              |
+| --- | ---------------- | ------------------ | ---------- | -------------------------------------------------------------- | ---------- | ------------- | ------------------ |
+| 12  | Alcoba auxiliar  | 4 × 2.5 (10 m²)    | Cambia     | 3.00 m × 3.00 m                                                | Hacia el bloque central (interior volteado para que los baños queden juntos) | Pendiente     | Pendiente Ventanas |
+| 13  | Baño mixto       | 2.4 × 2.5 (6 m²)   | Cambia     | 1.00 m × 1.95 m (igual que el baño principal)                  | Abajo (lote 24), del lado del ala izquierda: pared con pared con el baño principal (9) |               |                    |
+| 14  | Clóset auxiliar  | 0.6 × 2.5 (1.5 m²) | Cambia     | 0.60 m × 1.05 m (vertical: los 60 cm van paralelos al lote 24) | Arriba (lote 20), encima del baño mixto, del lado de la alcoba auxiliar |               |                    |
+| 15  | Vestier auxiliar | 1 × 2.5 (2.5 m²)   | Cambia     | 0.40 m × 1.05 m (vertical, como el clóset)                     | Arriba (lote 20), encima del baño mixto, del lado del ala izquierda |               |                    |
 
 ## 4. Zonas nuevas
 

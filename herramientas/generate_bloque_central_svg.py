@@ -32,10 +32,15 @@ ZONAS = [(1, "Cocina",       0,  0, 12,  4, "social",  False),
          (4, "Terraza",      0,  9,  3, 11, "terraza", False),
          (3, "Sala",         3,  9,  9, 11, "social",  False),
          (0, "4b Terraza",  12,  4,  4,  9, "terraza", False),
-         (16, "Estudio",    12, 13,  4,  7, "estudio", False)]
+         (6, "Estudio",     12, 13,  4,  7, "estudio", False)]
+
+# zonas pequeñas fuera de la rejilla, dibujadas encima de otra zona (en METROS)
+#           num  nombre  x      y     ancho  alto  color   ¿muro?  dentro de
+SUBZONAS = [(7, "Baño", 6.60, 8.75, 1.20, 1.00, "serv", True, "Estudio")]   # esquina Lote 24 / Lote 23, horizontal
 
 NOTAS = ["Baño (17) y bodega (18) sin muros: ahora son parte de la sala (4.39 × 5.36)",
-         "Estudio 1.95 × 3.41 en la esquina Lote 24 / Lote 23 (absorbe el acceso), con entrada desde el Lote 23",
+         "Estudio (6) 1.95 × 3.41 con entrada desde el Lote 23; en su esquina Lote 24 / Lote 23 va el baño (7) de 1.20 × 1.00",
+         "Ventana de la sala hacia el Lote 24: 1.50 m, centrada",
          "Terraza 4b 1.95 × 4.39 sin muro, con 2 peldaños 0.24 × 4.39 hacia el Lote 23",
          "Terraza de la vía 1.46 × 5.36 con 2 peldaños de 0.24 × 5.36 hacia la vía",
          "Ventanas hacia el Lote 20, centradas: cocina 3.85 m · lavandería 1.40 m"]
@@ -51,8 +56,10 @@ MARCOS = [(3, 9, 3, 9 + M30), (3, 20 - M30, 3, 20),      # terraza vía -> sala
 # ventanas: línea roja delgada que reemplaza ese tramo de muro
 _c = 6 - 3.85 / 2 / U       # cocina mide 12 u; ventana de 3.85 m centrada
 _l = 1.40 / 2 / U           # lavandería: 4 u desde x = 12; ventana de 1.40 m centrada
+_s = 1.50 / 2 / U           # sala: de x = 3 a 12 (centro 7.5); ventana de 1.50 m centrada
 VENTANAS = [(_c, 0, 12 - _c, 0),          # cocina -> Lote 20
-            (14 - _l, 0, 14 + _l, 0)]     # lavandería -> Lote 20
+            (14 - _l, 0, 14 + _l, 0),     # lavandería -> Lote 20
+            (7.5 - _s, 20, 7.5 + _s, 20)]  # sala -> Lote 24
 
 # entradas y ventanales (naranja): (eje, coordenada fija, desde, hasta)
 #   eje 'x' = sobre un muro vertical (x fijo); eje 'y' = sobre uno horizontal
@@ -91,6 +98,11 @@ def comprobar_zonas() -> None:
                 assert (cx, cy) not in celdas, f"{nom} se encima con {celdas[(cx, cy)]}"
                 celdas[(cx, cy)] = nom
     assert len(celdas) == ANCHO_U * ALTO_U, f"faltan {ANCHO_U * ALTO_U - len(celdas)} celdas por llenar"
+    zonas = {z[1]: z for z in ZONAS}
+    for _, nom, x, y, w, h, _, _, padre in SUBZONAS:
+        _, _, px_, py_, pw, ph, _, _ = zonas[padre]
+        assert (px_ * U - 1e-6 <= x and x + w <= (px_ + pw) * U + 1e-6 and
+                py_ * U - 1e-6 <= y and y + h <= (py_ + ph) * U + 1e-6), f"{nom} se sale de {padre}"
 
 
 def dibujar_zona(num, nom, x, y, w, h, col, muro) -> list[str]:
@@ -111,6 +123,17 @@ def dibujar_zona(num, nom, x, y, w, h, col, muro) -> list[str]:
         out.append(f'<text x="{cx:.1f}" y="{cy - 3:.1f}" font-size="12" font-weight="700" text-anchor="middle" fill="#1f2933">{etiqueta}</text>')
         out.append(f'<text x="{cx:.1f}" y="{cy + 12:.1f}" font-size="10.5" text-anchor="middle" fill="#3e4c59">{dims}</text>')
     return out
+
+
+def dibujar_subzona(num, nom, x, y, w, h, col, muro) -> list[str]:
+    """Zona chica en metros (no cae en la rejilla), encima de otra zona."""
+    x0, y0 = P(x / U, y / U)
+    x1, y1 = P((x + w) / U, (y + h) / U)
+    borde = 'stroke="#1f2933" stroke-width="3"' if muro else 'stroke="#9aa5b1" stroke-width="1" stroke-dasharray="5 4"'
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    return [f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{x1 - x0:.1f}" height="{y1 - y0:.1f}" fill="{C[col]}" {borde}/>',
+            f'<text x="{cx:.1f}" y="{cy - 1:.1f}" font-size="10" font-weight="700" text-anchor="middle" fill="#1f2933">{num} {nom}</text>',
+            f'<text x="{cx:.1f}" y="{cy + 10:.1f}" font-size="9" text-anchor="middle" fill="#3e4c59">{w:.2f} × {h:.2f}</text>']
 
 
 def dibujar_terraza_abierta(x, y, w, h) -> list[str]:
@@ -147,12 +170,14 @@ def generar_svg() -> str:
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="Segoe UI, Arial, sans-serif">',
            f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
            '<text x="40" y="42" font-size="22" font-weight="700" fill="#1f2933">Bloque central · acomodo elegido (7.80 × 9.75 m = 76 m²)</text>',
-           '<text x="40" y="66" font-size="13" fill="#3e4c59">Vía a la izquierda · Lote 20 arriba · Lote 24 abajo. Muros en la lavandería, comedor | terraza y estudio | terraza 4b; lo demás es abierto (punteado).</text>',
+           '<text x="40" y="66" font-size="13" fill="#3e4c59">Vía a la izquierda · Lote 20 arriba · Lote 24 abajo. Muros en la lavandería, el baño, comedor | terraza y estudio | terraza 4b; lo demás es abierto (punteado).</text>',
            '<text x="40" y="86" font-size="13" fill="#3e4c59"><tspan fill="#d9480f" font-weight="700">━━</tspan> entradas y ventanales: vía → comedor (continuo) · terraza → sala · terraza 4b → comedor · Lote 23 → estudio</text>',
            '<text x="40" y="106" font-size="13" fill="#3e4c59"><tspan fill="#1f2933" font-weight="700">━━</tspan> muro (30 cm de marco a cada lado de las entradas) · terrazas abiertas, sin muro, con 2 peldaños · <tspan fill="#e03131" font-weight="700">─</tspan> ventana</text>',
            f'<text x="{MX}" y="{MY - 26}" font-size="16" font-weight="700" fill="#1f2933">Opción A</text>']
     for z in ZONAS:
         out += dibujar_zona(*z)
+    for num, nom, x, y, w, h, col, muro, _ in SUBZONAS:
+        out += dibujar_subzona(num, nom, x, y, w, h, col, muro)
     (bx0, by0), (bx1, by1) = P(0, 0), P(ANCHO_U, ALTO_U)
     out.append(f'<rect x="{bx0:.1f}" y="{by0:.1f}" width="{bx1 - bx0:.1f}" height="{by1 - by0:.1f}" fill="none" stroke="#1f2933" stroke-width="5"/>')
     for _, _, x, y, w, h, col, _ in ZONAS:

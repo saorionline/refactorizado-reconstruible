@@ -70,6 +70,15 @@ ENTRADAS = [("x", 0, 4 + M30, 9 - M30),    # vía -> comedor, 30 cm de muro a ca
 
 PELDANO = 0.24 / U          # 24 cm de huella
 
+# alas (solo la masa, sin interior), en METROS desde la esquina sup-izq del Central.
+# Medidas y separación de la rama implantacion-lote22 (lote.db, "casa_reducida_alas_3x4"):
+# alas de 3 × 4 acostadas (4 de ancho × 3 de alto), a 2.75 m del Central, al ras de su
+# borde inferior, una pegada a la otra.
+SEPARACION_ALAS = 2.75
+#        nombre     x                          y     ancho alto  color      etiqueta
+ALAS = [("Ala der.", 7.80 + SEPARACION_ALAS,       6.75, 4.0, 3.0, "#8fbf9a", "3 × 4 m"),
+        ("Ala izq.", 7.80 + SEPARACION_ALAS + 4.0, 6.75, 4.0, 3.0, "#7fa7c9", "3 × 4 m")]
+
 # ---------------------------------------------------------------------------
 # Dibujo
 # ---------------------------------------------------------------------------
@@ -162,13 +171,34 @@ def dibujar_terraza_abierta(x, y, w, h) -> list[str]:
     return out
 
 
+def dibujar_alas() -> list[str]:
+    """Las dos alas como masas de color, más la cota de separación con el Central."""
+    out = []
+    for nom, x, y, w, h, col, etiqueta in ALAS:
+        x0, y0 = P(x / U, y / U)
+        x1, y1 = P((x + w) / U, (y + h) / U)
+        cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+        out += [f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{x1 - x0:.1f}" height="{y1 - y0:.1f}" fill="{col}" stroke="#1f2933" stroke-width="3"/>',
+                f'<text x="{cx:.1f}" y="{cy - 2:.1f}" font-size="12" font-weight="700" text-anchor="middle" fill="#1f2933">{nom}</text>',
+                f'<text x="{cx:.1f}" y="{cy + 13:.1f}" font-size="10.5" text-anchor="middle" fill="#1f2933">{etiqueta}</text>']
+    # cota de separación Central -> Ala der., a media altura de las alas
+    _, ax, ay, _, ah, _, _ = ALAS[0]
+    (c1x, cy_), (c2x, _) = P(7.80 / U, (ay + ah / 2) / U), P(ax / U, (ay + ah / 2) / U)
+    out += [f'<line x1="{c1x:.1f}" y1="{cy_:.1f}" x2="{c2x:.1f}" y2="{cy_:.1f}" stroke="#2f7fb5" stroke-width="1.2"/>',
+            f'<line x1="{c1x:.1f}" y1="{cy_ - 6:.1f}" x2="{c1x:.1f}" y2="{cy_ + 6:.1f}" stroke="#2f7fb5" stroke-width="1.2"/>',
+            f'<line x1="{c2x:.1f}" y1="{cy_ - 6:.1f}" x2="{c2x:.1f}" y2="{cy_ + 6:.1f}" stroke="#2f7fb5" stroke-width="1.2"/>',
+            f'<text x="{(c1x + c2x) / 2:.1f}" y="{cy_ - 6:.1f}" font-size="11" font-weight="700" text-anchor="middle" fill="#2f7fb5">{SEPARACION_ALAS:.2f} m</text>']
+    return out
+
+
 def generar_svg() -> str:
     comprobar_zonas()
-    W = max(900, int(MX * 2 + ANCHO_U * U * S))   # mínimo para que quepan título y leyenda
+    ancho_casa = max(x + w for _, x, _, w, _, _, _ in ALAS) if ALAS else ANCHO_U * U
+    W = max(900, int(MX * 2 + ancho_casa * S + 60))   # mínimo para que quepan título y leyenda
     H = int(MY + ALTO_U * U * S + 50 + 18 * len(NOTAS))
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="Segoe UI, Arial, sans-serif">',
            f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
-           '<text x="40" y="42" font-size="22" font-weight="700" fill="#1f2933">Bloque central · acomodo elegido (7.80 × 9.75 m = 76 m²)</text>',
+           '<text x="40" y="42" font-size="22" font-weight="700" fill="#1f2933">Bloque central (7.80 × 9.75 m = 76 m²) y alas</text>',
            '<text x="40" y="66" font-size="13" fill="#3e4c59">Vía a la izquierda · Lote 20 arriba · Lote 24 abajo. Muros: lavandería, baño, comedor | terraza, estudio | terraza 4b; lo demás abierto (punteado).</text>',
            '<text x="40" y="86" font-size="13" fill="#3e4c59"><tspan fill="#d9480f" font-weight="700">━━</tspan> entradas y ventanales: vía → comedor (continuo) · terraza → sala · terraza 4b → comedor</text>',
            '<text x="40" y="106" font-size="13" fill="#3e4c59"><tspan fill="#1f2933" font-weight="700">━━</tspan> muro (30 cm de marco a cada lado de las entradas) · terrazas abiertas, sin muro, con 2 peldaños · <tspan fill="#e03131" font-weight="700">─</tspan> ventana</text>',
@@ -190,11 +220,14 @@ def generar_svg() -> str:
         p1, p2 = ((fijo, a), (fijo, b)) if eje == "x" else ((a, fijo), (b, fijo))
         out += [linea(p1, p2, "#ffffff", 7), linea(p1, p2, "#d9480f", 4)]
 
+    out += dibujar_alas()
+
     my = (by0 + by1) / 2
+    lx = P(ancho_casa / U, 0)[0] + 30   # LOTE 23 a la derecha de toda la casa
     out.append(f'<text x="{bx0 - 44:.1f}" y="{my:.1f}" font-size="11" fill="#7b8794" text-anchor="middle" transform="rotate(-90 {bx0 - 44:.1f} {my:.1f})">VÍA</text>')
     out.append(f'<text x="{(bx0 + bx1) / 2:.1f}" y="{by0 - 8:.1f}" font-size="11" fill="#7b8794" text-anchor="middle">LOTE 20</text>')
     out.append(f'<text x="{(bx0 + bx1) / 2:.1f}" y="{by1 + 18:.1f}" font-size="11" fill="#7b8794" text-anchor="middle">LOTE 24</text>')
-    out.append(f'<text x="{bx1 + 44:.1f}" y="{my:.1f}" font-size="11" fill="#7b8794" text-anchor="middle" transform="rotate(90 {bx1 + 44:.1f} {my:.1f})">LOTE 23</text>')
+    out.append(f'<text x="{lx:.1f}" y="{my:.1f}" font-size="11" fill="#7b8794" text-anchor="middle" transform="rotate(90 {lx:.1f} {my:.1f})">LOTE 23</text>')
     for k, n in enumerate(NOTAS):
         out.append(f'<text x="{MX}" y="{by1 + 48 + k * 18:.0f}" font-size="12" fill="#3e4c59">• {n}</text>')
     out.append("</svg>")

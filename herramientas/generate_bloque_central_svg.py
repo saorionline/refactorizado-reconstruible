@@ -39,7 +39,7 @@ ZONAS = [(1, "Cocina",       0,  0, 12,  4, "social",  False),
 SUBZONAS = [(7, "Baño", 5.85, 8.75, 1.20, 1.00, "serv", True, "Estudio")]   # lado Lote 24, pegado a la sala, horizontal
 
 NOTAS = ["Baño (17) y bodega (18) sin muros: ahora son parte de la sala (4.39 × 5.36)",
-         "Estudio (6) 1.95 × 3.41 con entrada desde el Lote 23; abajo, pegado a la sala, el baño (7) de 1.20 × 1.00",
+         "Estudio (6) 1.95 × 3.41 con ventana de 1.75 m hacia el Lote 23; abajo, pegado a la sala, el baño (7) de 1.20 × 1.00",
          "Baño (7): puerta desde la sala y ventana de 1 m hacia el Lote 24 · ventana de la sala al Lote 24: 2.50 m",
          "Terraza 4b 1.95 × 4.39 sin muro, con 2 peldaños 0.24 × 4.39 hacia el Lote 23",
          "Terraza de la vía 1.46 × 5.36 con 2 peldaños de 0.24 × 5.36 hacia la vía",
@@ -61,13 +61,13 @@ _b = (5.85 + 1.20 / 2) / U  # centro del baño (7), en unidades
 VENTANAS = [(_c, 0, 12 - _c, 0),          # cocina -> Lote 20
             (14 - _l, 0, 14 + _l, 0),     # lavandería -> Lote 20
             (7.5 - _s, 20, 7.5 + _s, 20),  # sala -> Lote 24
-            (_b - 0.5 / U, 20, _b + 0.5 / U, 20)]  # baño (7) -> Lote 24, 1 m centrada
+            (_b - 0.5 / U, 20, _b + 0.5 / U, 20),  # baño (7) -> Lote 24, 1 m centrada
+            (16, 17.4 - 2 * 1.8, 16, 17.4)]        # estudio -> Lote 23: era la entrada (1.8 u), al doble hacia el Lote 20
 
 # entradas y ventanales (naranja): (eje, coordenada fija, desde, hasta)
 #   eje 'x' = sobre un muro vertical (x fijo); eje 'y' = sobre uno horizontal
 ENTRADAS = [("x", 0, 4 + M30, 9 - M30),    # vía -> comedor, 30 cm de muro a cada lado
             ("x", 3, 9 + M30, 20 - M30),   # ventanal terraza -> sala
-            ("x", 16, 15.6, 17.4),         # Lote 23 -> estudio
             ("x", 12, 4 + M30, 13 - M30),  # ventanal terraza 4b -> comedor
             ("x", 12, 1, 2.85),            # cocina -> lavandería
             ("x", 12, 8.90 / U, 9.60 / U)]  # sala -> baño (7), puerta de 0.70 m
@@ -174,7 +174,7 @@ def generar_svg() -> str:
            f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
            '<text x="40" y="42" font-size="22" font-weight="700" fill="#1f2933">Bloque central · acomodo elegido (7.80 × 9.75 m = 76 m²)</text>',
            '<text x="40" y="66" font-size="13" fill="#3e4c59">Vía a la izquierda · Lote 20 arriba · Lote 24 abajo. Muros: lavandería, baño, comedor | terraza, estudio | terraza 4b; lo demás abierto (punteado).</text>',
-           '<text x="40" y="86" font-size="13" fill="#3e4c59"><tspan fill="#d9480f" font-weight="700">━━</tspan> entradas y ventanales: vía → comedor (continuo) · terraza → sala · terraza 4b → comedor · Lote 23 → estudio</text>',
+           '<text x="40" y="86" font-size="13" fill="#3e4c59"><tspan fill="#d9480f" font-weight="700">━━</tspan> entradas y ventanales: vía → comedor (continuo) · terraza → sala · terraza 4b → comedor</text>',
            '<text x="40" y="106" font-size="13" fill="#3e4c59"><tspan fill="#1f2933" font-weight="700">━━</tspan> muro (30 cm de marco a cada lado de las entradas) · terrazas abiertas, sin muro, con 2 peldaños · <tspan fill="#e03131" font-weight="700">─</tspan> ventana</text>',
            f'<text x="{MX}" y="{MY - 26}" font-size="16" font-weight="700" fill="#1f2933">Opción A</text>']
     for z in ZONAS:

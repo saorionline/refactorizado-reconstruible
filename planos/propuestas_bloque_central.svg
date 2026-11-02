@@ -2,7 +2,7 @@
 <rect width="900" height="750" fill="#ffffff"/>
 <text x="40" y="42" font-size="22" font-weight="700" fill="#1f2933">Bloque central · acomodo elegido (7.80 × 9.75 m = 76 m²)</text>
 <text x="40" y="66" font-size="13" fill="#3e4c59">Vía a la izquierda · Lote 20 arriba · Lote 24 abajo. Muros: lavandería, baño, comedor | terraza, estudio | terraza 4b; lo demás abierto (punteado).</text>
-<text x="40" y="86" font-size="13" fill="#3e4c59"><tspan fill="#d9480f" font-weight="700">━━</tspan> entradas y ventanales: vía → comedor (continuo) · terraza → sala · terraza 4b → comedor · Lote 23 → estudio</text>
+<text x="40" y="86" font-size="13" fill="#3e4c59"><tspan fill="#d9480f" font-weight="700">━━</tspan> entradas y ventanales: vía → comedor (continuo) · terraza → sala · terraza 4b → comedor</text>
 <text x="40" y="106" font-size="13" fill="#3e4c59"><tspan fill="#1f2933" font-weight="700">━━</tspan> muro (30 cm de marco a cada lado de las entradas) · terrazas abiertas, sin muro, con 2 peldaños · <tspan fill="#e03131" font-weight="700">─</tspan> ventana</text>
 <text x="70" y="124" font-size="16" font-weight="700" fill="#1f2933">Opción A</text>
 <rect x="70.0" y="150.0" width="222.3" height="74.1" fill="#f3ece0" stroke="#9aa5b1" stroke-width="1" stroke-dasharray="5 4"/>
@@ -56,12 +56,12 @@
 <line x1="161.4" y1="520.5" x2="256.4" y2="520.5" stroke="#e03131" stroke-width="1.6"/>
 <line x1="296.1" y1="520.5" x2="334.1" y2="520.5" stroke="#ffffff" stroke-width="6"/>
 <line x1="296.1" y1="520.5" x2="334.1" y2="520.5" stroke="#e03131" stroke-width="1.6"/>
+<line x1="366.4" y1="405.6" x2="366.4" y2="472.3" stroke="#ffffff" stroke-width="6"/>
+<line x1="366.4" y1="405.6" x2="366.4" y2="472.3" stroke="#e03131" stroke-width="1.6"/>
 <line x1="70.0" y1="235.5" x2="70.0" y2="305.3" stroke="#ffffff" stroke-width="7"/>
 <line x1="70.0" y1="235.5" x2="70.0" y2="305.3" stroke="#d9480f" stroke-width="4"/>
 <line x1="125.6" y1="328.1" x2="125.6" y2="509.1" stroke="#ffffff" stroke-width="7"/>
 <line x1="125.6" y1="328.1" x2="125.6" y2="509.1" stroke="#d9480f" stroke-width="4"/>
-<line x1="366.4" y1="439.0" x2="366.4" y2="472.3" stroke="#ffffff" stroke-width="7"/>
-<line x1="366.4" y1="439.0" x2="366.4" y2="472.3" stroke="#d9480f" stroke-width="4"/>
 <line x1="292.3" y1="235.5" x2="292.3" y2="379.4" stroke="#ffffff" stroke-width="7"/>
 <line x1="292.3" y1="235.5" x2="292.3" y2="379.4" stroke="#d9480f" stroke-width="4"/>
 <line x1="292.3" y1="168.5" x2="292.3" y2="202.8" stroke="#ffffff" stroke-width="7"/>
@@ -73,7 +73,7 @@
 <text x="218.2" y="538.5" font-size="11" fill="#7b8794" text-anchor="middle">LOTE 24</text>
 <text x="410.4" y="335.2" font-size="11" fill="#7b8794" text-anchor="middle" transform="rotate(90 410.4 335.2)">LOTE 23</text>
 <text x="70" y="568" font-size="12" fill="#3e4c59">• Baño (17) y bodega (18) sin muros: ahora son parte de la sala (4.39 × 5.36)</text>
-<text x="70" y="586" font-size="12" fill="#3e4c59">• Estudio (6) 1.95 × 3.41 con entrada desde el Lote 23; abajo, pegado a la sala, el baño (7) de 1.20 × 1.00</text>
+<text x="70" y="586" font-size="12" fill="#3e4c59">• Estudio (6) 1.95 × 3.41 con ventana de 1.75 m hacia el Lote 23; abajo, pegado a la sala, el baño (7) de 1.20 × 1.00</text>
 <text x="70" y="604" font-size="12" fill="#3e4c59">• Baño (7): puerta desde la sala y ventana de 1 m hacia el Lote 24 · ventana de la sala al Lote 24: 2.50 m</text>
 <text x="70" y="622" font-size="12" fill="#3e4c59">• Terraza 4b 1.95 × 4.39 sin muro, con 2 peldaños 0.24 × 4.39 hacia el Lote 23</text>
 <text x="70" y="640" font-size="12" fill="#3e4c59">• Terraza de la vía 1.46 × 5.36 con 2 peldaños de 0.24 × 5.36 hacia la vía</text>

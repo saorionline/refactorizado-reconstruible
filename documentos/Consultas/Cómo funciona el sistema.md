@@ -43,7 +43,7 @@ ventanas, entradas y alas se editan en las listas al inicio de
 | --- | --- |
 | `main` | versión de trabajo: implantación, interiores y boceto del Central con las alas |
 | `implantacion-lote22` | bloques ya redimensionados sobre el lote (Central 7.80 × 9.75, alas 3 × 4) |
-| `casa-modelo-original` | respaldo del plano original de 120 m² |
+| `casa-modelo-original` | copia de `main` (se pone al día a mano después de subir cambios a `main`) |
 | `implantacion-interiores` | respaldo (igual a una versión anterior de `main`) |
 
 Para ver en qué rama estás: `git branch --show-current`.

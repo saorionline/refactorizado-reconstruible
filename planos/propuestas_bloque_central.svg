@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 750" width="900" height="750" font-family="Segoe UI, Arial, sans-serif">
-<rect width="900" height="750" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 570" width="900" height="570" font-family="Segoe UI, Arial, sans-serif">
+<rect width="900" height="570" fill="#ffffff"/>
 <text x="40" y="42" font-size="22" font-weight="700" fill="#1f2933">Bloque central · acomodo elegido (7.80 × 9.75 m = 76 m²)</text>
 <text x="40" y="66" font-size="13" fill="#3e4c59">Vía a la izquierda · Lote 20 arriba · Lote 24 abajo. Muros: lavandería, baño, comedor | terraza, estudio | terraza 4b; lo demás abierto (punteado).</text>
 <text x="40" y="86" font-size="13" fill="#3e4c59"><tspan fill="#d9480f" font-weight="700">━━</tspan> entradas y ventanales: vía → comedor (continuo) · terraza → sala · terraza 4b → comedor</text>
@@ -72,10 +72,4 @@
 <text x="218.2" y="142.0" font-size="11" fill="#7b8794" text-anchor="middle">LOTE 20</text>
 <text x="218.2" y="538.5" font-size="11" fill="#7b8794" text-anchor="middle">LOTE 24</text>
 <text x="410.4" y="335.2" font-size="11" fill="#7b8794" text-anchor="middle" transform="rotate(90 410.4 335.2)">LOTE 23</text>
-<text x="70" y="568" font-size="12" fill="#3e4c59">• Baño (17) y bodega (18) sin muros: ahora son parte de la sala (4.39 × 5.36)</text>
-<text x="70" y="586" font-size="12" fill="#3e4c59">• Estudio (6) 1.95 × 3.41 con ventana de 1.75 m hacia el Lote 23; abajo, pegado a la sala, el baño (7) de 1.20 × 1.00</text>
-<text x="70" y="604" font-size="12" fill="#3e4c59">• Baño (7): puerta desde la sala y ventana de 1 m hacia el Lote 24 · ventana de la sala al Lote 24: 2.50 m</text>
-<text x="70" y="622" font-size="12" fill="#3e4c59">• Terraza 4b 1.95 × 4.39 sin muro, con 2 peldaños 0.24 × 4.39 hacia el Lote 23</text>
-<text x="70" y="640" font-size="12" fill="#3e4c59">• Terraza de la vía 1.46 × 5.36 con 2 peldaños de 0.24 × 5.36 hacia la vía</text>
-<text x="70" y="658" font-size="12" fill="#3e4c59">• Ventanas hacia el Lote 20, centradas: cocina 3.85 m · lavandería 1.40 m</text>
 </svg>

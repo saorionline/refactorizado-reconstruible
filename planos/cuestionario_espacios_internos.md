@@ -28,23 +28,24 @@ Plano de referencia: `propuestas_bloque_central.svg`. Escribe en **Decisión**
 | #   | Zona                                    | Medidas hoy | Dónde está hoy                                          | Decisión | Si cambia: medidas / ubicación | Notas |
 | --- | --------------------------------------- | ----------- | ------------------------------------------------------- | -------- | ------------------------------ | ----- |
 | 1   | Cocina                                  | 5.85 × 1.95 | Arriba (Lote 20), esquina de la vía; abierta al comedor; ventana de 3.85 m centrada hacia el Lote 20 |          |                                |       |
-| 5   | Lavandería *(única con muro)*          | 1.95 × 1.95 | Arriba, al lado de la cocina, esquina Lote 20 / Lote 23 |          |                                |       |
+| 5   | Lavandería *(con muro)*                | 1.95 × 1.95 | Arriba, al lado de la cocina, esquina Lote 20 / Lote 23; ventana de 1.40 m centrada hacia el Lote 20 |          |                                |       |
 | 2   | Comedor                                 | 5.85 × 2.44 | Debajo de la cocina; entrada continua desde la vía; muro hacia la terraza |          |                                |       |
 | 4   | Terraza lado vía                        | 1.46 × 5.36 | Lado de la vía, hasta abajo (Lote 24); 2 peldaños de 0.24 × 5.36 hacia la vía |          |                                |       |
-| 3   | Sala *(incluye el antiguo baño 17 y bodega 18)* | 4.39 × 5.36 | Al lado de la terraza (ventanal con marco de 30 cm), desde el comedor hasta abajo (Lote 24) | |                    |       |
-| 16  | Estudio *(absorbe el antiguo acceso)*   | 1.95 × 3.41 | Esquina Lote 24 / Lote 23; entrada desde el Lote 23; muro hacia la terraza 4b |          |                                |       |
+| 3   | Sala *(incluye el antiguo baño 17 y bodega 18)* | 4.39 × 5.36 | Al lado de la terraza (ventanal con marco de 30 cm), desde el comedor hasta abajo (Lote 24); ventana de 2.50 m centrada hacia el Lote 24 | |                    |       |
+| 6   | Estudio *(antes 16; absorbe el antiguo acceso)* | 1.95 × 3.41 | Esquina Lote 24 / Lote 23; ventana de 1.75 m hacia el Lote 23; muro hacia la terraza 4b; incluye el baño (7) |          |                                |       |
+| 7   | Baño *(con muro)*                       | 1.20 × 1.00 | Dentro del estudio, lado del Lote 24, pegado a la sala (horizontal); puerta desde la sala; ventana de 1 m centrada hacia el Lote 24; quedan 0.75 m libres del estudio hacia el Lote 23 |          |                                |       |
 | 4b  | Terraza lado Lote 23                    | 1.95 × 4.39 | Lado del Lote 23, debajo de la lavandería; sin muro, 2 peldaños de 0.24 × 4.39 hacia el Lote 23; ventanal al comedor con marco de 30 cm | |                  |       |
 
-**Eliminadas:** 6 Ciclas · 7 Rincón · 17 Baño de invitados y 18 Mini bodega (sin muros, pasan a ser parte de la sala) · Acceso Lote 24 (pasa a ser parte del estudio).
+**Eliminadas:** Ciclas (antes 6) · Rincón (antes 7) · 17 Baño de invitados y 18 Mini bodega (sin muros, pasan a ser parte de la sala) · Acceso Lote 24 (pasa a ser parte del estudio).
 
 ### Lados del bloque
 
 | Lado | Hoy | Decisión (muro cerrado, ventana, puerta, ventanal…) |
 | --- | --- | --- |
 | Vía (izquierda) | Entrada continua al comedor (todo el lado); terraza abierta con 2 peldaños (0.24 × 5.36) | |
-| Lote 20 (arriba) | Muro de cocina y lavandería; ventana de 3.85 m centrada en la cocina | |
-| **Lote 23 (derecha)** | Lavandería (muro); terraza 4b sin muro con 2 peldaños (0.24 × 4.39); estudio con la entrada de la casa | |
-| Lote 24 (abajo) | Sin puertas: terraza lado vía (abierta), sala y estudio | |
+| Lote 20 (arriba) | Muro de cocina y lavandería; ventanas centradas: cocina 3.85 m, lavandería 1.40 m | |
+| **Lote 23 (derecha)** | Lavandería (muro); terraza 4b sin muro con 2 peldaños (0.24 × 4.39); estudio con ventana de 1.75 m (ya no hay entrada por este lado) | |
+| Lote 24 (abajo) | Sin puertas: terraza lado vía (abierta); ventanas de la sala (2.50 m) y del baño (7) (1 m) | |
 
 ## 2. Ala izquierda (4 × 3 m · 12 m²)
 

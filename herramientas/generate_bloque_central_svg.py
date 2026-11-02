@@ -38,12 +38,8 @@ ZONAS = [(1, "Cocina",       0,  0, 12,  4, "social",  False),
 #           num  nombre  x      y     ancho  alto  color   ¿muro?  dentro de
 SUBZONAS = [(7, "Baño", 5.85, 8.75, 1.20, 1.00, "serv", True, "Estudio")]   # lado Lote 24, pegado a la sala, horizontal
 
-NOTAS = ["Baño (17) y bodega (18) sin muros: ahora son parte de la sala (4.39 × 5.36)",
-         "Estudio (6) 1.95 × 3.41 con ventana de 1.75 m hacia el Lote 23; abajo, pegado a la sala, el baño (7) de 1.20 × 1.00",
-         "Baño (7): puerta desde la sala y ventana de 1 m hacia el Lote 24 · ventana de la sala al Lote 24: 2.50 m",
-         "Terraza 4b 1.95 × 4.39 sin muro, con 2 peldaños 0.24 × 4.39 hacia el Lote 23",
-         "Terraza de la vía 1.46 × 5.36 con 2 peldaños de 0.24 × 5.36 hacia la vía",
-         "Ventanas hacia el Lote 20, centradas: cocina 3.85 m · lavandería 1.40 m"]
+# notas debajo del dibujo (vacío: el detalle vive en planos/cuestionario_espacios_internos.md)
+NOTAS: list[str] = []
 
 # muros sueltos (x1, y1, x2, y2), además de los de las zonas con muro
 MUROS = [(0, 9, 3, 9),      # comedor | terraza de la vía (1.46 m)
@@ -169,7 +165,7 @@ def dibujar_terraza_abierta(x, y, w, h) -> list[str]:
 def generar_svg() -> str:
     comprobar_zonas()
     W = max(900, int(MX * 2 + ANCHO_U * U * S))   # mínimo para que quepan título y leyenda
-    H = int(MY + ALTO_U * U * S + 230)
+    H = int(MY + ALTO_U * U * S + 50 + 18 * len(NOTAS))
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="Segoe UI, Arial, sans-serif">',
            f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
            '<text x="40" y="42" font-size="22" font-weight="700" fill="#1f2933">Bloque central · acomodo elegido (7.80 × 9.75 m = 76 m²)</text>',

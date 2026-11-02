@@ -56,12 +56,12 @@ Si PowerShell responde _"sqlite3 no se reconoce como comando"_, la carpeta donde
 ### Orden recomendado
 
 1. Ejecuta los dos `SELECT` (muros y puertas) para ver qué filas hay.
-2. Escribe los `DELETE` y el `UPDATE` en `cambio.sql` y aplícalo, con `python run_sql.py cambio.sql` o con `.read cambio.sql`.
+2. Escribe los `DELETE` y el `UPDATE` en `cambio.sql` y aplícalo, con `py run_sql.py cambio.sql` o con `.read cambio.sql`.
 3. Vuelve a ejecutar los `SELECT`. Ahora no deberían devolver nada.
 4. Regenera el plano:
     
     ```bash
-    python generate_svg.py
+    py generate_svg.py
     ```
     
 

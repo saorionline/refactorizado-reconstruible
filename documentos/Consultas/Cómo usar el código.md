@@ -31,13 +31,13 @@
 3. **Aplica el cambio y regenera el plano.** Desde la carpeta `herramientas`, con el `.venv` activado, ejecuta primero:
     
     ```bash
-    python run_sql.py cambio.sql
+    py run_sql.py cambio.sql
     ```
     
     y después:
     
     ```bash
-    python generate_svg.py
+    py generate_svg.py
     ```
     
     El resultado queda en `planos/plano_cenital_propuesta_01.svg`.
@@ -137,13 +137,13 @@ UPDATE zonas SET label_mode = 'ninguno' WHERE id = 'estudio';
 Luego, desde la carpeta `herramientas`, aplica el cambio:
 
 ```bash
-python run_sql.py cambio.sql
+py run_sql.py cambio.sql
 ```
 
 y regenera el plano:
 
 ```bash
-python generate_svg.py
+py generate_svg.py
 ```
 
 **Antes de aplicarlo, ten en cuenta:**

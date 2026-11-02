@@ -10,15 +10,17 @@
           {
             "id": "3ed0ea5a1abdbe85",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "documentos/Consultas/Cómo usar el código.md",
+                "file": "planos/cuestionario_espacios_internos.md",
                 "mode": "source",
                 "source": false
               },
+              "pinned": true,
               "icon": "lucide-file",
-              "title": "Cómo usar el código"
+              "title": "cuestionario_espacios_internos"
             }
           }
         ]
@@ -186,11 +188,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "f883db4f8ef3c216",
+  "active": "3ed0ea5a1abdbe85",
   "lastOpenFiles": [
+    "plano_nuevo/_vista_tmp.html",
+    "herramientas/README.md.tmp.25388.d3e12bd95279",
+    "herramientas/generate_bloque_central_svg.py",
+    "herramientas/generate_bloque_central_svg.py.tmp.25388.08f2329bfa8d",
+    "planos/propuestas_bloque_central.svg",
+    "documentos/Consultas/Cómo usar el código.md",
     "herramientas/cambio.sql",
     "documentos/Consultas/SQLite Consultas.md",
-    "documentos/Consultas/Cómo usar el código.md",
     "documentos/Consultas",
     "herramientas/plano.db-journal"
   ]

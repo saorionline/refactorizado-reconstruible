@@ -46,23 +46,23 @@ Plano de referencia: `propuestas_bloque_central.svg`. Escribe en **Decisión**
 | **Lote 23 (derecha)** | Lavandería (muro); terraza 4b sin muro con 2 peldaños (0.24 × 4.39); estudio con la entrada de la casa | |
 | Lote 24 (abajo) | Sin puertas: terraza lado vía (abierta), sala y estudio | |
 
-## 2. Ala izquierda (4 × 5 m · 20 m²)
+## 2. Ala izquierda (4 × 3 m · 12 m²)
 
-| #   | Zona              | Medidas hoy      | ¿Se queda? | Nuevas medidas | ¿Dónde va? | Puertas hacia | Notas |
-| --- | ----------------- | ---------------- | ---------- | -------------- | ---------- | ------------- | ----- |
-| 8   | Alcoba principal  | 4 × 3 (12 m²)    |            |                |            |               |       |
-| 9   | Baño principal    | 2.4 × 2 (4.8 m²) |            |                |            |               |       |
-| 10  | Clóset principal  | 1 × 2 (2 m²)     |            |                |            |               |       |
-| 11  | Vestier principal | 0.6 × 2 (1.2 m²) |            |                |            |               |       |
+| #   | Zona              | Medidas hoy      | ¿Se queda? | Nuevas medidas  | ¿Dónde va? | Puertas hacia | Notas |
+| --- | ----------------- | ---------------- | ---------- | --------------- | ---------- | ------------- | ----- |
+| 8   | Alcoba principal  | 4 × 3 (12 m²)    | Cambia     | 3.00 m × 3.00 m |            |               |       |
+| 9   | Baño principal    | 2.4 × 2 (4.8 m²) | Cambia     | 1.00 m × 3.00 m |            |               |       |
+| 10  | Clóset principal  | 1 × 2 (2 m²)     | No         |                 |            |               |       |
+| 11  | Vestier principal | 0.6 × 2 (1.2 m²) | No         |                 |            |               |       |
 
-## 3. Ala derecha (4 × 5 m · 20 m²)
+## 3. Ala derecha (4 × 3 m · 12 m²)
 
-| # | Zona | Medidas hoy | ¿Se queda? | Nuevas medidas | ¿Dónde va? | Puertas hacia | Notas |
-|---|---|---|---|---|---|---|---|
-| 12 | Alcoba auxiliar | 4 × 2.5 (10 m²) | | | | | |
-| 13 | Baño mixto | 2.4 × 2.5 (6 m²) | | | | | |
-| 14 | Clóset auxiliar | 0.6 × 2.5 (1.5 m²) | | | | | |
-| 15 | Vestier auxiliar | 1 × 2.5 (2.5 m²) | | | | | |
+| #   | Zona             | Medidas hoy        | ¿Se queda? | Nuevas medidas  | ¿Dónde va? | Puertas hacia | Notas |
+| --- | ---------------- | ------------------ | ---------- | --------------- | ---------- | ------------- | ----- |
+| 12  | Alcoba auxiliar  | 4 × 2.5 (10 m²)    | Cambia     | 3.00 m × 3.00 m |            |               |       |
+| 13  | Baño mixto       | 2.4 × 2.5 (6 m²)   | Cambia     | 1.00 m × 3.00 m |            |               |       |
+| 14  | Clóset auxiliar  | 0.6 × 2.5 (1.5 m²) |            |                 |            |               |       |
+| 15  | Vestier auxiliar | 1 × 2.5 (2.5 m²)   |            |                 |            |               |       |
 
 ## 4. Zonas nuevas
 

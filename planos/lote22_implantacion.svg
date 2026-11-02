@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 826" width="1100" height="826" font-family="Segoe UI, Arial, sans-serif">
+<rect width="1100" height="826" fill="#ffffff"/>
+<text x="40" y="44" font-size="22" font-weight="700" fill="#1f2933">Lote 22 · implantación de la casa</text>
+<text x="40" y="68" font-size="13" fill="#3e4c59">Generado desde lote.db · arriba la parte alta (Lote 20), izquierda la vía principal</text>
+<defs><clipPath id="clipLote"><polygon points="90.0,110.0 1036.3,110.0 1041.8,566.0 179.0,523.0"/></clipPath></defs>
+<polygon points="90.0,110.0 1036.3,110.0 1041.8,566.0 179.0,523.0" fill="#fbfaf6"/>
+<g clip-path="url(#clipLote)" stroke="#ebe7dd" stroke-width="0.8"><line x1="90.0" y1="110.0" x2="90.0" y2="566.0"/><line x1="114.0" y1="110.0" x2="114.0" y2="566.0"/><line x1="138.0" y1="110.0" x2="138.0" y2="566.0"/><line x1="162.0" y1="110.0" x2="162.0" y2="566.0"/><line x1="186.0" y1="110.0" x2="186.0" y2="566.0"/><line x1="210.0" y1="110.0" x2="210.0" y2="566.0"/><line x1="234.0" y1="110.0" x2="234.0" y2="566.0"/><line x1="258.0" y1="110.0" x2="258.0" y2="566.0"/><line x1="282.0" y1="110.0" x2="282.0" y2="566.0"/><line x1="306.0" y1="110.0" x2="306.0" y2="566.0"/><line x1="330.0" y1="110.0" x2="330.0" y2="566.0"/><line x1="354.0" y1="110.0" x2="354.0" y2="566.0"/><line x1="378.0" y1="110.0" x2="378.0" y2="566.0"/><line x1="402.0" y1="110.0" x2="402.0" y2="566.0"/><line x1="426.0" y1="110.0" x2="426.0" y2="566.0"/><line x1="450.0" y1="110.0" x2="450.0" y2="566.0"/><line x1="474.0" y1="110.0" x2="474.0" y2="566.0"/><line x1="498.0" y1="110.0" x2="498.0" y2="566.0"/><line x1="522.0" y1="110.0" x2="522.0" y2="566.0"/><line x1="546.0" y1="110.0" x2="546.0" y2="566.0"/><line x1="570.0" y1="110.0" x2="570.0" y2="566.0"/><line x1="594.0" y1="110.0" x2="594.0" y2="566.0"/><line x1="618.0" y1="110.0" x2="618.0" y2="566.0"/><line x1="642.0" y1="110.0" x2="642.0" y2="566.0"/><line x1="666.0" y1="110.0" x2="666.0" y2="566.0"/><line x1="690.0" y1="110.0" x2="690.0" y2="566.0"/><line x1="714.0" y1="110.0" x2="714.0" y2="566.0"/><line x1="738.0" y1="110.0" x2="738.0" y2="566.0"/><line x1="762.0" y1="110.0" x2="762.0" y2="566.0"/><line x1="786.0" y1="110.0" x2="786.0" y2="566.0"/><line x1="810.0" y1="110.0" x2="810.0" y2="566.0"/><line x1="834.0" y1="110.0" x2="834.0" y2="566.0"/><line x1="858.0" y1="110.0" x2="858.0" y2="566.0"/><line x1="882.0" y1="110.0" x2="882.0" y2="566.0"/><line x1="906.0" y1="110.0" x2="906.0" y2="566.0"/><line x1="930.0" y1="110.0" x2="930.0" y2="566.0"/><line x1="954.0" y1="110.0" x2="954.0" y2="566.0"/><line x1="978.0" y1="110.0" x2="978.0" y2="566.0"/><line x1="1002.0" y1="110.0" x2="1002.0" y2="566.0"/><line x1="1026.0" y1="110.0" x2="1026.0" y2="566.0"/><line x1="1050.0" y1="110.0" x2="1050.0" y2="566.0"/><line x1="90.0" y1="110.0" x2="1041.8" y2="110.0"/><line x1="90.0" y1="134.0" x2="1041.8" y2="134.0"/><line x1="90.0" y1="158.0" x2="1041.8" y2="158.0"/><line x1="90.0" y1="182.0" x2="1041.8" y2="182.0"/><line x1="90.0" y1="206.0" x2="1041.8" y2="206.0"/><line x1="90.0" y1="230.0" x2="1041.8" y2="230.0"/><line x1="90.0" y1="254.0" x2="1041.8" y2="254.0"/><line x1="90.0" y1="278.0" x2="1041.8" y2="278.0"/><line x1="90.0" y1="302.0" x2="1041.8" y2="302.0"/><line x1="90.0" y1="326.0" x2="1041.8" y2="326.0"/><line x1="90.0" y1="350.0" x2="1041.8" y2="350.0"/><line x1="90.0" y1="374.0" x2="1041.8" y2="374.0"/><line x1="90.0" y1="398.0" x2="1041.8" y2="398.0"/><line x1="90.0" y1="422.0" x2="1041.8" y2="422.0"/><line x1="90.0" y1="446.0" x2="1041.8" y2="446.0"/><line x1="90.0" y1="470.0" x2="1041.8" y2="470.0"/><line x1="90.0" y1="494.0" x2="1041.8" y2="494.0"/><line x1="90.0" y1="518.0" x2="1041.8" y2="518.0"/><line x1="90.0" y1="542.0" x2="1041.8" y2="542.0"/><line x1="90.0" y1="566.0" x2="1041.8" y2="566.0"/></g>
+<polyline points="1033.0,274.9 938.9,245.1 874.6,221.4 777.8,186.1 637.7,109.3" fill="none" stroke="#a39e8f" stroke-width="1.6" stroke-dasharray="8 5" clip-path="url(#clipLote)"/>
+<polyline points="1033.0,462.3 994.6,480.1 938.4,446.0 852.7,405.4 783.6,357.2 715.0,295.5 635.5,225.4 500.4,107.4" fill="none" stroke="#a39e8f" stroke-width="1.6" stroke-dasharray="8 5" clip-path="url(#clipLote)"/>
+<polyline points="944.9,560.7 824.2,459.0 718.8,347.1 597.4,229.8 459.1,133.3 361.9,111.4" fill="none" stroke="#a39e8f" stroke-width="1.6" stroke-dasharray="8 5" clip-path="url(#clipLote)"/>
+<polyline points="747.6,567.9 644.4,475.3 491.5,318.8 343.9,173.4 229.0,113.1" fill="none" stroke="#a39e8f" stroke-width="1.6" stroke-dasharray="8 5" clip-path="url(#clipLote)"/>
+<polyline points="596.9,560.2 476.6,459.7 355.2,342.1 244.8,219.4 160.8,124.6" fill="none" stroke="#a39e8f" stroke-width="1.6" stroke-dasharray="8 5" clip-path="url(#clipLote)"/>
+<polyline points="441.4,556.4 356.4,488.7 246.0,366.1 179.5,223.0 155.3,127.3" fill="none" stroke="#a39e8f" stroke-width="1.6" stroke-dasharray="8 5" clip-path="url(#clipLote)"/>
+<polyline points="291.6,565.5 216.5,446.5 187.4,326.2 156.2,187.0 116.2,201.4" fill="none" stroke="#a39e8f" stroke-width="1.6" stroke-dasharray="8 5" clip-path="url(#clipLote)"/>
+<polygon points="90.0,110.0 1036.3,110.0 1041.8,566.0 179.0,523.0" fill="none" stroke="#1f2933" stroke-width="4" stroke-linejoin="round"/>
+<text x="563.2" y="88.4" font-size="12" fill="#3e4c59" text-anchor="middle" dominant-baseline="middle" transform="rotate(0.00 563.2 88.4)">39.43 m · Lote 20</text>
+<text x="1060.7" y="337.7" font-size="12" fill="#3e4c59" text-anchor="middle" dominant-baseline="middle" transform="rotate(89.31 1060.7 337.7)">19.00 m · Lote 23</text>
+<text x="609.4" y="566.1" font-size="12" fill="#3e4c59" text-anchor="middle" dominant-baseline="middle" transform="rotate(2.85 609.4 566.1)">36.00 m · hacia Lote 24</text>
+<text x="113.4" y="321.1" font-size="12" fill="#3e4c59" text-anchor="middle" dominant-baseline="middle" transform="rotate(77.83 113.4 321.1)">17.60 m · Vía vehicular principal</text>
+<defs><marker id="flechaSube" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#c0763a"/></marker></defs><line x1="892.3" y1="230.0" x2="1002.7" y2="138.8" stroke="#c0763a" stroke-width="2.4" marker-end="url(#flechaSube)"/><text x="885.1" y="264.0" font-size="12" font-weight="700" fill="#c0763a" text-anchor="middle">SUBE · parte alta</text>
+<polygon points="648.0,206.0 648.0,446.0 456.0,446.0 456.0,206.0" fill="#d9b77e" fill-opacity="0.9" stroke="#1f2933" stroke-width="1.6"/>
+<polygon points="453.1,314.0 453.1,338.0 435.6,326.0" fill="#1f2933"/>
+<text x="552.0" y="324.0" font-size="14" font-weight="700" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">Central</text>
+<text x="552.0" y="324.0" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2933">Central</text>
+<text x="552.0" y="341.0" font-size="11" font-weight="400" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">10 × 8 m</text>
+<text x="552.0" y="341.0" font-size="11" font-weight="400" text-anchor="middle" fill="#1f2933">10 × 8 m</text>
+<polygon points="834.0,332.0 834.0,428.0 714.0,428.0 714.0,332.0" fill="#8fbf9a" fill-opacity="0.9" stroke="#1f2933" stroke-width="1.6"/>
+<text x="774.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">Ala der.</text>
+<text x="774.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2933">Ala der.</text>
+<text x="774.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">4 × 5 m</text>
+<text x="774.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#1f2933">4 × 5 m</text>
+<polygon points="954.0,332.0 954.0,428.0 834.0,428.0 834.0,332.0" fill="#7fa7c9" fill-opacity="0.9" stroke="#1f2933" stroke-width="1.6"/>
+<text x="894.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">Ala izq.</text>
+<text x="894.0" y="378.0" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2933">Ala izq.</text>
+<text x="894.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#ffffff" stroke="#ffffff" stroke-width="3" paint-order="stroke">4 × 5 m</text>
+<text x="894.0" y="395.0" font-size="11" font-weight="400" text-anchor="middle" fill="#1f2933">4 × 5 m</text>
+<g transform="translate(1011.8,54.8) rotate(155.1)">
+<circle r="21" fill="none" stroke="#1f2933" stroke-width="1.5"/>
+<path d="M0,-28 L8.5,7.6 L0,1.9 L-8.5,7.6 Z" fill="#1f2933"/>
+<text x="0" y="-36" font-size="15" font-weight="700" fill="#1f2933" text-anchor="middle" dominant-baseline="middle" transform="rotate(-155.1 0 -36)">N</text>
+<text x="0" y="36" font-size="12" font-weight="400" fill="#1f2933" text-anchor="middle" dominant-baseline="middle" transform="rotate(-155.1 0 36)">S</text>
+<text x="38" y="0" font-size="12" font-weight="400" fill="#1f2933" text-anchor="middle" dominant-baseline="middle" transform="rotate(-155.1 38 0)">OR</text>
+<text x="-42" y="0" font-size="12" font-weight="400" fill="#1f2933" text-anchor="middle" dominant-baseline="middle" transform="rotate(-155.1 -42 0)">OCC</text>
+</g>
+<rect x="90.0" y="596.0" width="24.0" height="6" fill="#1f2933" stroke="#1f2933" stroke-width="1"/>
+<rect x="114.0" y="596.0" width="24.0" height="6" fill="#ffffff" stroke="#1f2933" stroke-width="1"/>
+<rect x="138.0" y="596.0" width="24.0" height="6" fill="#1f2933" stroke="#1f2933" stroke-width="1"/>
+<rect x="162.0" y="596.0" width="24.0" height="6" fill="#ffffff" stroke="#1f2933" stroke-width="1"/>
+<rect x="186.0" y="596.0" width="24.0" height="6" fill="#1f2933" stroke="#1f2933" stroke-width="1"/>
+<text x="90.0" y="616.0" font-size="11" fill="#3e4c59">0</text>
+<text x="210.0" y="616.0" font-size="11" fill="#3e4c59" text-anchor="middle">5 m</text>
+<text x="40" y="646.0" font-size="15" font-weight="700" fill="#1f2933">Revisión</text>
+<text x="40" y="670.0" font-size="13" fill="#2e7d4f">✓ <tspan font-weight="700" fill="#1f2933">Central</tspan><tspan fill="#3e4c59"> · bien ubicado · x 15.25, y 4, giro 90° · cruza 4 curvas de nivel</tspan></text>
+<text x="40" y="692.0" font-size="13" fill="#2e7d4f">✓ <tspan font-weight="700" fill="#1f2933">Ala der.</tspan><tspan fill="#3e4c59"> · bien ubicado · x 26, y 9.25, giro 90° · cruza 2 curvas de nivel</tspan></text>
+<text x="40" y="714.0" font-size="13" fill="#2e7d4f">✓ <tspan font-weight="700" fill="#1f2933">Ala izq.</tspan><tspan fill="#3e4c59"> · bien ubicado · x 31, y 9.25, giro 90° · cruza 1 curva de nivel</tspan></text>
+<text x="40" y="744.0" font-size="12" fill="#7b8794">Huella 120 m² · ocupa 17.6 % del lote (≈ 681 m² con las 4 medidas; el plano dice 725.55 m²).</text>
+<text x="40" y="764.0" font-size="12" fill="#7b8794">Curvas de nivel calcadas de la imagen, sin valores confirmados. Más curvas cruzadas = más corte y relleno.</text>
+<text x="40" y="784.0" font-size="12" fill="#7b8794">El triángulo negro marca el frente de la casa.</text>
+</svg>

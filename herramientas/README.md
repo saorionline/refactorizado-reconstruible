@@ -29,8 +29,12 @@ python --version
 | `generate_svg.py` | Lee `plano.db` y escribe `../planos/plano_cenital_propuesta_01.svg`. |
 | `queries_ejemplo.sql` | Recetario de consultas: ver muros de una zona, cambiar un muro de A a B, mover una puerta, resumen de áreas, chequeos de consistencia. |
 | `check_md_sync.py` | Compara `documentos/propuesta_01_cuadro_de_areas_v2.md` contra `plano.db` y avisa si un número/área quedó desincronizado entre ambos documentos. |
-| `init_db.py` | (Re)crea `plano.db` desde cero a partir de `schema.sql`. |
-| `run_sql.py` | Corre un archivo `.sql` contra `plano.db` (para no pelear con comillas del shell). |
+| `init_db.py` | (Re)crea `plano.db` desde cero a partir de `schema.sql` (o otra base con `--sql` / `--db`). |
+| `run_sql.py` | Corre un archivo `.sql` contra `plano.db`, o contra otra base con `--db` (para no pelear con comillas del shell). |
+| `lote.sql` | Tablas y datos de la implantación en el Lote 22: vértices del lote, curvas de nivel, bloques de la casa y composiciones guardadas. |
+| `lote.db` | Base de datos generada a partir de `lote.sql`. |
+| `generate_lote_svg.py` | Lee `lote.db` y escribe `../planos/lote22_implantacion.svg`, con la revisión de que los bloques quepan. |
+| `queries_lote.sql` | Recetario para el lote: mover/girar bloques, mover toda la casa, retiro, guardar y volver a una composición. |
 
 ## Flujo de trabajo
 
@@ -104,3 +108,27 @@ python generate_svg.py
 ```
 
 Listo -- sin tocar una sola coordenada de píxel.
+
+## Implantación en el Lote 22 (`lote.db`)
+
+Mismo flujo que el plano de la casa, pero con su propia base de datos. El
+lote está girado para leerse con la parte alta (Lote 20) arriba y la vía
+principal a la izquierda. Origen (0,0) en la esquina Lote 20 / vía; X hacia
+la derecha, Y hacia abajo. Cada bloque (`central`, `ala_der`, `ala_izq`)
+tiene `x`, `y` (esquina superior izquierda de su huella) y `giro`.
+
+```bash
+py init_db.py --sql lote.sql --db lote.db     # solo la primera vez (borra cambios no guardados en lote.sql)
+py run_sql.py --db lote.db cambio_lote.sql    # aplicar un cambio (recetas en queries_lote.sql)
+py generate_lote_svg.py                       # regenerar ../planos/lote22_implantacion.svg
+```
+
+Ejemplo: "mueve el Ala izq. 1 m a la derecha":
+
+```sql
+UPDATE bloques SET x = x + 1.0 WHERE id = 'ala_izq';
+```
+
+Para no perder una distribución, guárdala con nombre y vuelve a ella cuando
+quieras (recetas 8 y 9 de `queries_lote.sql`). La distribución acordada está
+guardada como `central_a_la_via`.
